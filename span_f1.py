@@ -39,11 +39,12 @@ def getInstanceScores(predPath, goldPath):
         tp += overlap
         fp += len(predSpans) - overlap
         fn += len(goldSpans) - overlap
-        
+    #calculate accuracy
+
     prec = 0.0 if tp+fp == 0 else tp/(tp+fp)
     rec = 0.0 if tp+fn == 0 else tp/(tp+fn)
     f1 = 0.0 if prec+rec == 0.0 else 2 * (prec * rec) / (prec + rec)
-    return f1
+    return {'prec': prec, 'rec': rec, 'f1': f1}
     
     
 
