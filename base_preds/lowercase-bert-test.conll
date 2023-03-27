@@ -1,61 +1,61 @@
-what	O
+What	O
 language	O
 is	O
 talked	O
 in	O
-iguazu	O
+Iguazu	O
 ?	O
 
-portuguese	O
+portuguese	B-MISC
 
 spanish	O
 
-green	O
-tea	O
-or	O
-white	O
-tea	O
+Green	O
+Tea	O
+Or	O
+White	O
+Tea	O
 ?	O
 
-green	O
+Green	O
 
-green	O
-tea	O
+Green	O
+Tea	O
 .	O
 
-green	O
+Green	O
 tea	O
 
-what	O
+What	O
 is	O
 this	O
-miramar	O
+Miramar	B-PER
 ?	O
 
-it	O
+It	O
 is	O
 a	O
 place	O
 in	O
-argentina	B-LOC
-lol	I-LOC
+Argentina	O
+lol	O
 
-does	O
+Does	B-PER
 anyone	O
 know	O
 any	O
-good	O
-restaurants	O
+good	B-PER
+restaurants	B-PER
 in	O
 cordoba	O
 ?	O
 
-not	O
+Not	O
 me	O
 sorry	O
 .	O
 
-does	O
+Does	B-PER
 anyone	O
 know	O
 of	O
@@ -66,12 +66,12 @@ in	O
 iguazu	O
 ?	O
 
-not	O
+Not	O
 me	O
 sorry	O
 .	O
 
-which	O
+Which	B-ORG
 wonderful	O
 contact	O
 of	O
@@ -82,7 +82,7 @@ upping	O
 all	O
 my	O
 best	O
-answers	O
+answers	B-PER
 ^	O
 ^	O
 ?	O
@@ -90,67 +90,67 @@ answers	O
 =	O
 )	O
 
-what	O
+What	O
 are	O
 some	O
-major	O
+Major	O
 land	O
 forms	O
 in	O
-ireland	O
+Ireland	O
 ?	O
 
-mountains	O
+Mountains	B-ORG
+,	I-ORG
+cliffs	I-ORG
 ,	O
-cliffs	O
-,	O
-peat	O
+peat	B-PER
 bogs	O
-,	O
-valleys	O
+,	B-PER
+valleys	B-PER
 
-do	O
+Do	O
 you	O
 know	O
 the	O
 online	O
 streaming	O
-link	O
+link	B-ORG
 for	O
-red	O
-fm	O
+Red	O
+FM	O
 93	O
 .	O
 5	O
 delhi	O
 ?	O
 
-any	O
-format	O
+any	B-ORG
+format	I-ORG
 url	O
 ?	O
 
-υes	O
+Υes	B-PER
 .	O
 
-how	O
-fare	O
-of	O
-kolkatta	O
+how	B-PER
+fare	B-PER
+of	I-PER
+kolkatta	I-PER
 ?	O
 
-kolkatta	B-LOC
+kolkatta	B-ORG
 is	O
 an	O
-indian	B-MISC
-state	O
+Indian	O
+State	O
 .	O
 
 lol	O
 .	O
 .	O
 .	O
-kolkata	O
+Kolkata	O
 is	O
 not	O
 for	O
@@ -164,20 +164,20 @@ sale	O
 
 roflmao	O
 
-which	O
+Which	B-ORG
 do	O
 you	O
 prefer	O
-crab	O
+Crab	O
 or	O
-shrimp	O
+Shrimp	O
 ?	O
 
-i	O
+I	O
 like	O
-shrimp	O
+shrimp	B-MISC
 ,	O
-fried	O
+fried	B-LOC
 ,	O
 grilled	O
 ,	O
@@ -185,9 +185,9 @@ or	O
 steamed	O
 .	O
 
-crab	O
+crab	B-LOC
 
-shrimp	O
+shrimp	B-MISC
 
 how	O
 much	O
@@ -214,7 +214,7 @@ at	O
 address	O
 below	O
 
-e	O
+E	O
 -	O
 mail	O
 :	O
@@ -226,11 +226,11 @@ com	O
 
 m	O
 
-who	O
+Who	O
 is	O
 artist	O
-gunther	O
-uecker	O
+Gunther	O
+Uecker	O
 ;	O
 explain	O
 ?	O
@@ -247,13 +247,13 @@ com	O
 /	O
 bio	O
 /	O
-guntheruecker	O
+GuntherUecker	O
 -	O
 1930	O
 .	O
 shtml	O
 
-his	O
+His	O
 work	O
 
 http	O
@@ -274,9 +274,9 @@ en	O
 &	O
 rlz	O
 =	O
-1g1gglq	O
+1G1GGLQ	O
 _	O
-enus359	O
+ENUS359	O
 &	O
 q	O
 =	O
@@ -306,7 +306,7 @@ um	O
 &	O
 ie	O
 =	O
-utf	O
+UTF	O
 -	O
 8	O
 &	O
@@ -320,7 +320,7 @@ og	O
 &	O
 sa	O
 =	O
-n	O
+N	O
 &	O
 tab	O
 =	O
@@ -336,9 +336,9 @@ bih	O
 &	O
 sei	O
 =	O
-xvg5tqrrgoxk2axg0ry	O
+XVG5TqrrGoXK2AXG0ry	O
 -	O
-bw	O
+Bw	O
 #	O
 um	O
 =	O
@@ -350,9 +350,9 @@ en	O
 &	O
 rlz	O
 =	O
-1g1gglq	O
+1G1GGLQ	O
 _	O
-enus359	O
+ENUS359	O
 &	O
 tbm	O
 =	O
@@ -383,13 +383,13 @@ uecker	O
 &	O
 aq	O
 =	O
-1s	O
+1S	O
 &	O
 aqi	O
 =	O
 g1g	O
 -	O
-s3	O
+S3	O
 &	O
 aql	O
 =	O
@@ -441,7 +441,7 @@ bih	O
 =	O
 756	O
 
-how	O
+How	O
 much	O
 does	O
 it	O
@@ -449,18 +449,18 @@ cost	O
 to	O
 buy	O
 a	O
-big	O
-mac	O
+Big	O
+Mac	O
 meal	O
 in	O
 your	O
 area	O
 ?	O
 
-here	O
+Here	O
 in	O
-indiana	O
-i	O
+Indiana	O
+I	O
 think	O
 it	O
 '	O
@@ -511,56 +511,56 @@ and	O
 smashburger	O
 ?	O
 
-where	O
+Where	O
 to	O
 buy	O
 bodybuilding	O
 supplements	O
 in	O
-delhi	O
+Delhi	B-PER
 ?	O
 
-any	O
+Any	B-ORG
 particular	O
 shop	O
 that	O
 you	O
 know	O
 of	O
-and	O
+AND	O
 their	O
 number	O
 .	O
 
-atal	O
-pharmacy	O
+Atal	O
+Pharmacy	O
 ,	O
-karol	O
-bag	O
+Karol	O
+Bag	O
 .	O
 
-kindly	O
+kindly	B-ORG
 contact	O
 laxmi	O
 nagar	O
 zim	O
 in	O
-delhi	B-LOC
+delhi	O
 .	O
 .	O
 
-do	O
+Do	O
 you	O
 think	O
 there	O
 are	O
 any	O
 koreans	O
-in	O
-miramar	O
+in	B-ORG
+Miramar	O
 ?	O
 
-heck	O
+Heck	O
 there	O
 must	O
 be	O
@@ -570,25 +570,25 @@ least	O
 korean	O
 .	O
 
-no	O
+No	O
 ,	O
 but	O
-i	O
+I	O
 do	O
 believe	O
 some	O
-koreans	B-MISC
+Koreans	O
 reside	O
 in	O
 the	O
 country	O
 of	O
-ha	O
+HA	O
 -	O
 ha	O
 !	O
 
-can	O
+Can	O
 you	O
 use	O
 the	O
@@ -607,13 +607,13 @@ s	O
 phone	O
 ?	O
 
-you	O
+You	O
 '	O
 d	O
 need	O
 their	O
-apple	O
-id	O
+Apple	O
+ID	O
 and	O
 password	O
 ,	O
@@ -627,10 +627,10 @@ you	O
 can	O
 track	O
 any	O
-iphone	O
+iPhone	O
 .	O
 
-besides	O
+Besides	O
 eating	O
 good	O
 foods	O
@@ -641,10 +641,10 @@ do	O
 people	O
 do	O
 in	O
-miramar	O
+Miramar	O
 ?	O
 
-well	O
+Well	O
 ,	O
 they	O
 have	O
@@ -656,47 +656,47 @@ that	O
 they	O
 play	O
 like	O
-basketball	O
+basketball	B-LOC
 ,	O
-soccer	O
+soccer	B-LOC
 ,	O
 etc	O
 .	O
 
-well	O
+Well	O
 they	O
 play	O
 the	O
-wii	O
+Wii	O
 like	O
 me	O
 :	O
 )	O
 
-is	O
-hank	O
-green	O
-awesome	O
+Is	B-MISC
+Hank	O
+Green	O
+Awesome	O
 ?	O
 
-the	O
-hank	O
-green	O
-i	O
+The	O
+Hank	O
+Green	O
+I	O
 know	O
 is	O
 hardly	O
 awesome	O
 .	O
 
-he	O
+He	O
 needs	O
 a	O
 shower	O
 ,	O
 and	O
 he	O
-picks	O
+picks	B-ORG
 his	O
 nose	O
 all	O
@@ -704,7 +704,7 @@ the	O
 time	O
 .	O
 
-he	O
+He	O
 is	O
 at	O
 his	O
@@ -714,27 +714,27 @@ he	O
 is	O
 doing	O
 his	O
-nerd	O
+Nerd	O
 impression	O
 .	O
 .	O
 .	O
 
-weather	O
+weather	B-ORG
 in	O
 december	O
 in	O
-tremblant	O
+Tremblant	O
 ?	O
 
-typically	O
-it	O
+Typically	B-PER
+it	I-PER
 '	O
 s	O
 cold	O
 .	O
 
-there	O
+There	O
 may	O
 or	O
 may	O
@@ -749,7 +749,7 @@ weather	O
 conditions	O
 .	O
 
-in	O
+In	O
 the	O
 ski	O
 resort	O
@@ -791,7 +791,7 @@ ans	O
 .	O
 ?	O
 
-as	O
+As	O
 in	O
 the	O
 old	O
@@ -817,14 +817,14 @@ smoke	O
 etc	O
 .	O
 
-fun	O
+Fun	O
 picture	O
 websites	O
 (	O
 :	O
 ?	O
 
-i	O
+I	O
 '	O
 m	O
 looking	O
@@ -859,7 +859,7 @@ funny	O
 pictures	O
 !	O
 
-please	O
+Please	B-PER
 give	O
 me	O
 lots	O
@@ -871,12 +871,12 @@ to	O
 look	O
 !	O
 
-thank	O
+Thank	B-LOC
 you	O
 (	O
 :	O
 
-ifunny	O
+Ifunny	O
 .	O
 com	O
 
@@ -886,30 +886,30 @@ you	O
 mold	O
 silicone	O
 or	O
-rubber	O
+rubber	B-ORG
 into	O
 a	O
 mermaid	O
 tail	O
 ?	O
 
-carve	O
+Carve	O
 one	O
 in	O
 your	O
 chosen	O
-medium	O
+medium	B-PER
 .	O
 
-make	O
+Make	B-LOC
 a	O
 mold	O
 .	O
 
-cast	O
+Cast	O
 .	O
 
-depending	O
+Depending	O
 on	O
 scale	O
 ,	O
@@ -924,19 +924,19 @@ mold	O
 from	O
 that	O
 
-they	O
+They	O
 sell	O
 these	O
 kits	O
-in	O
-most	O
-hobby	O
-and	O
+in	B-PER
+most	I-PER
+hobby	B-PER
+and	I-PER
 craft	O
 stores	O
 .	O
 
-do	O
+Do	O
 you	O
 prefer	O
 ham	O
@@ -949,7 +949,7 @@ your	O
 breakfast	O
 ?	O
 
-without	O
+Without	O
 a	O
 doubt	O
 .	O
@@ -973,13 +973,13 @@ sausages	O
 with	O
 my	O
 breakfast	O
-i	O
+I	O
 like	O
 bacon	O
 and	O
 sausage	O
 when	O
-i	O
+I	O
 having	O
 a	O
 big	O
@@ -995,7 +995,7 @@ the	O
 works	O
 .	O
 
-can	O
+Can	O
 police	O
 trace	O
 a	O
@@ -1009,7 +1009,7 @@ switched	O
 off	O
 ?	O
 
-can	O
+Can	O
 police	O
 trace	O
 a	O
@@ -1023,7 +1023,7 @@ switched	O
 off	O
 ?	O
 
-yeah	O
+Yeah	B-ORG
 you	O
 got	O
 ta	O
@@ -1037,7 +1037,7 @@ the	O
 only	O
 way	O
 
-yes	O
+Yes	O
 ,	O
 they	O
 all	O
@@ -1050,10 +1050,10 @@ just	O
 like	O
 gps	O
 
-yes	O
+Yes	B-ORG
 .	O
 
-mazzoni	B-PER
+mazzoni	O
 '	O
 s	O
 deli	O
@@ -1066,7 +1066,7 @@ pa	O
 ?	O
 
 is	O
-mazzoni	B-PER
+mazzoni	O
 '	O
 s	O
 deli	O
@@ -1095,13 +1095,13 @@ of	O
 the	O
 food	O
 blogs	O
-i	O
+I	O
 ve	O
 read	O
 say	O
 so	O
 and	O
-i	O
+I	O
 will	O
 travel	O
 from	O
@@ -1111,16 +1111,16 @@ that	O
 s	O
 true	O
 
-yep	O
+yep	B-PER
 
-dinner	O
+Dinner	B-ORG
 and	O
 dancing	O
 in	O
-chicago	O
+Chicago	O
 ?	O
 
-i	O
+I	O
 '	O
 m	O
 under	O
@@ -1151,7 +1151,7 @@ dance	O
 floor	O
 .	O
 
-it	O
+It	O
 '	O
 s	O
 okay	O
@@ -1164,7 +1164,7 @@ little	O
 pricier	O
 .	O
 
-any	O
+Any	B-PER
 good	O
 suggestions	O
 would	O
@@ -1173,30 +1173,30 @@ be	O
 appreciated	O
 .	O
 
-rumba	O
-room	O
+Rumba	B-ORG
+Room	I-ORG
 
-courage	O
-the	O
-cowardly	O
+Courage	O
+the	B-ORG
+cowardly	B-ORG
 dog	O
 ?	O
 
-in	O
+In	O
 the	O
-episode	O
+Episode	B-ORG
 "	O
-so	O
+So	O
 in	O
-louvre	O
-are	O
-we	O
-two	O
+Louvre	O
+Are	O
+We	O
+Two	O
 "	O
 ,	O
-how	O
+How	O
 many	O
-diffrent	O
+diffrent	B-ORG
 painting	O
 /	O
 scupltures	O
@@ -1209,7 +1209,7 @@ the	O
 artists	O
 ?	O
 
-link	O
+Link	O
 to	O
 video	O
 :	O
@@ -1225,13 +1225,13 @@ com	O
 /	O
 video	O
 /	O
-c8f5bbec570c4a4dbc326f694d79942a	O
+C8F5BBEC570C4A4DBC326F694D79942A	O
 /	O
 courage	O
 -	O
 the	O
 -	O
-cowardly	O
+cowardly	B-ORG
 -	O
 dog	O
 -	O
@@ -1240,7 +1240,7 @@ so	O
 .	O
 aspx	O
 
-you	O
+You	O
 should	O
 really	O
 ask	O
@@ -1251,7 +1251,7 @@ art	O
 section	O
 .	O
 
-they	O
+They	O
 re	O
 probably	O
 just	O
@@ -1262,7 +1262,7 @@ show	O
 anyways	O
 .	O
 
-name	O
+Name	B-PER
 something	O
 you	O
 find	O
@@ -1276,24 +1276,24 @@ a	O
 stick	O
 ?	O
 
-cotton	O
-candy	O
+Cotton	B-PER
+Candy	I-PER
 
-corn	O
-dog	O
+Corn	O
+Dog	B-ORG
 
-candy	O
-apple	O
+Candy	B-ORG
+Apple	O
 
-meat	O
-kabob	O
+Meat	O
+Kabob	O
 
-ship	O
+Ship	O
 on	O
 a	O
-stick	O
+Stick	O
 (	O
-prize	O
+Prize	O
 at	O
 various	O
 trivia	O
@@ -1304,29 +1304,29 @@ board	O
 .	O
 )	O
 
-all	O
+All	O
 of	O
 those	O
 ;	O
-d	O
+D	O
 
-monkey	O
-brain	O
+Monkey	O
+Brain	O
 .	O
 
-what	O
+What	O
 country	O
 are	O
 we	O
-talking	O
+talking	B-PER
 about	O
 ?	O
 
-i	O
+I	O
 like	O
 my	O
-monkey	O
-brain	O
+Monkey	O
+Brain	B-ORG
 on	O
 a	O
 stick	O
@@ -1334,7 +1334,7 @@ for	O
 sure	O
 .	O
 
-how	O
+How	O
 come	O
 no	O
 one	O
@@ -1348,7 +1348,7 @@ this	O
 section	O
 ?	O
 
-i	O
+I	O
 mean	O
 besides	O
 me	O
@@ -1356,7 +1356,7 @@ of	O
 course	O
 .	O
 
-because	O
+Because	O
 obviously	O
 most	O
 people	O
@@ -1369,14 +1369,14 @@ this	O
 section	O
 .	O
 
-someone	O
+Someone	O
 had	O
 to	O
 be	O
 first	O
 .	O
 
-i	O
+I	O
 have	O
 never	O
 been	O
@@ -1385,7 +1385,7 @@ there	O
 
 well	O
 ,	O
-i	O
+I	O
 do	O
 n	O
 '	O
@@ -1394,55 +1394,55 @@ ask	O
 questions	O
 here	O
 because	O
-i	O
+I	O
 have	O
 no	O
 clue	O
 what	O
 "	O
-iguazu	O
+Iguazu	O
 "	O
 is	O
 .	O
 .	O
 .	O
 
-what	O
+What	O
 do	O
 you	O
 think	O
 of	O
-air	O
-france	O
+Air	O
+France	O
 ?	O
 
-i	O
+I	O
 love	O
-air	O
-france	O
+Air	O
+France	O
 !	O
 
-their	O
+Their	O
 service	O
 is	O
 top	O
 -	O
 notch	O
 and	O
-i	O
+I	O
 especially	O
 love	O
 the	O
 free	O
-french	O
+French	O
 champagne	O
 served	O
 even	O
 in	O
-economy	O
+Economy	O
 .	O
 
-i	O
+I	O
 also	O
 find	O
 their	O
@@ -1455,7 +1455,7 @@ other	O
 airlines	O
 .	O
 
-plus	O
+Plus	O
 you	O
 land	O
 in	O
@@ -1466,7 +1466,7 @@ terminal	O
 .	O
 .	O
 
-i	O
+I	O
 go	O
 out	O
 of	O
@@ -1474,21 +1474,21 @@ my	O
 way	O
 to	O
 use	O
-air	O
-france	O
+Air	O
+France	O
 .	O
 
-expensive	O
+expensive	B-ORG
 
-what	O
+What	O
 '	O
 s	O
 the	O
 difference	O
 between	O
-indian	B-MISC
+Indian	O
 and	O
-african	B-MISC
+African	B-PER
 ringnecks	O
 and	O
 alexandrine	O
@@ -1496,7 +1496,7 @@ parrots	O
 ?	O
 ?	O
 
-i	O
+I	O
 was	O
 fixing	O
 to	O
@@ -1512,7 +1512,7 @@ of	O
 research	O
 ,	O
 (	O
-i	O
+I	O
 '	O
 m	O
 a	O
@@ -1523,13 +1523,13 @@ owner	O
 ,	O
 macaws	O
 ,	O
-cockatoos	O
+cockatoos	B-ORG
 ,	O
 amazons	O
 )	O
 ,	O
 
-and	O
+And	O
 noticed	O
 two	O
 other	O
@@ -1541,7 +1541,7 @@ lot	O
 alike	O
 .	O
 
-so	O
+So	O
 does	O
 anyone	O
 know	O
@@ -1551,7 +1551,7 @@ difference	O
 is	O
 ?	O
 
-thanks	O
+Thanks	O
 
 if	O
 i	O
@@ -1593,7 +1593,7 @@ gamestops	O
 do	O
 nt	O
 check	O
-id	O
+ID	O
 for	O
 the	O
 pre	O
@@ -1612,7 +1612,7 @@ but	O
 a	O
 lot	O
 of	O
-store	O
+store	B-PER
 want	O
 to	O
 see	O
@@ -1629,8 +1629,8 @@ pre	O
 -	O
 order	O
 
-has	O
-anyone	O
+Has	O
+anyone	B-ORG
 ever	O
 worked	O
 for	O
@@ -1639,7 +1639,7 @@ leisure	O
 cruises	O
 ?	O
 
-i	O
+I	O
 '	O
 m	O
 considering	O
@@ -1647,10 +1647,10 @@ taking	O
 a	O
 job	O
 with	O
-steiner	O
+Steiner	O
 and	O
 noticed	O
-i	O
+I	O
 have	O
 to	O
 pay	O
@@ -1660,14 +1660,14 @@ my	O
 travel	O
 .	O
 
-was	O
+Was	O
 wondering	O
 if	O
 anyone	O
 knew	O
 a	O
 rough	O
-estimate	O
+estimate	I-MISC
 of	O
 how	O
 much	O
@@ -1678,14 +1678,14 @@ travel	O
 and	O
 training	O
 
-i	O
+I	O
 have	O
 n	O
 '	O
 t	O
 personally	O
 but	O
-i	O
+I	O
 know	O
 a	O
 couple	O
@@ -1695,7 +1695,7 @@ who	O
 have	O
 .	O
 
-wendi	O
+Wendi	B-ORG
 has	O
 worked	O
 for	O
@@ -1708,20 +1708,20 @@ her	O
 blog	O
 .	O
 
-best	O
-pos	O
+Best	O
+POS	O
 system	O
 in	O
-philadelphia	O
+Philadelphia	O
 ?	O
 
-what	O
+What	O
 is	O
 the	O
 best	O
 pos	O
 system	O
-i	O
+I	O
 can	O
 buy	O
 in	O
@@ -1729,7 +1729,7 @@ philadelphia	O
 pa	O
 ?	O
 
-i	O
+I	O
 need	O
 something	O
 reliable	O
@@ -1738,8 +1738,8 @@ good	O
 looking	O
 .	O
 
-prosperity	O
-pos	O
+Prosperity	O
+POS	O
 makes	O
 the	O
 best	O
@@ -1747,7 +1747,7 @@ pos	O
 systems	O
 .	O
 
-i	O
+I	O
 use	O
 them	O
 for	O
@@ -1775,7 +1775,7 @@ support	O
 is	O
 .	O
 
-do	O
+Do	O
 yourself	O
 a	O
 favor	O
@@ -1800,7 +1800,7 @@ p	O
 =	O
 ya	O
 
-what	O
+What	O
 are	O
 "	O
 good	O
@@ -1808,7 +1808,7 @@ good	O
 speakers	O
 ?	O
 
-i	O
+I	O
 '	O
 ve	O
 been	O
@@ -1842,7 +1842,7 @@ of	O
 speakers	O
 .	O
 
-i	O
+I	O
 like	O
 music	O
 very	O
@@ -1875,44 +1875,44 @@ better	O
 
 thanks	O
 
-b	O
+B	O
 &	O
 w	O
 .	O
 
-bose	O
+Bose	O
 is	O
 not	O
 good	O
 
-usps	O
-delivery	O
+USPS	O
+Delivery	O
 in	O
-auckland	O
+Auckland	O
 ,	O
-nz	O
+NZ	O
 ?	O
 
-i	O
+I	O
 have	O
 ordered	O
-bose	O
-headfones	O
+Bose	O
+Headfones	O
 worth	O
 300	O
-usd	O
+USD	O
 .	O
 
-they	O
+They	O
 have	O
 been	O
 shipped	O
 using	O
-usps	O
-priority	O
-mail	O
-international	O
-parcels	O
+USPS	O
+Priority	O
+Mail	O
+International	O
+Parcels	O
 .	O
 
 will	O
@@ -1922,7 +1922,7 @@ to	O
 pay	O
 customs	O
 in	O
-nz	O
+NZ	O
 .	O
 
 it	O
@@ -1963,10 +1963,10 @@ for	O
 gifts	O
 .	O
 
-yup	O
+Yup	O
 .	O
 
-yes	O
+Yes	B-ORG
 ,	O
 you	O
 must	O
@@ -1983,26 +1983,26 @@ near	O
 by	O
 ?	O
 
-well	O
+Well	O
 there	O
 s	O
-mc	O
+Mc	O
 .	O
-donald	O
+Donald	O
 s	O
 ,	O
-taco	O
-bell	O
+Taco	B-LOC
+Bell	O
 ,	O
-burger	O
-king	O
+Burger	O
+King	O
 .	O
 .	O
 .	O
 .	O
 .	O
 
-but	O
+But	O
 my	O
 resturant	O
 is	O
@@ -2023,7 +2023,7 @@ quite	O
 close	O
 .	O
 
-it	O
+It	O
 '	O
 s	O
 just	O
@@ -2040,17 +2040,17 @@ corner	O
 .	O
 .	O
 
-nearby	O
+Nearby	O
 what	O
 ?	O
 
-loop	O
+Loop	O
 ,	O
-north	O
-side	O
+North	O
+Side	O
 ,	O
-south	O
-side	O
+South	O
+Side	O
 ,	O
 near	O
 suburbs	O
@@ -2059,7 +2059,7 @@ far	O
 suburbs	O
 ?	O
 
-chicago	O
+Chicago	O
 '	O
 s	O
 a	O
@@ -2067,19 +2067,19 @@ big	O
 area	O
 .	O
 
-portillo	O
+PORTILLO	O
 '	O
-s	O
-or	O
-white	O
-castle	O
+S	O
+OR	O
+WHITE	O
+CASTLE	O
 !	O
 :	O
-d	O
+D	O
 
-nzers	O
+NZers	O
 :	O
-have	O
+Have	O
 you	O
 decided	O
 who	O
@@ -2092,7 +2092,7 @@ vote	O
 for	O
 ?	O
 
-and	O
+And	O
 has	O
 this	O
 changed	O
@@ -2101,18 +2101,18 @@ previous	O
 years	O
 ?	O
 
-i	O
+I	O
 '	O
 m	O
 just	O
 curious	O
 .	O
 
-bay	O
+Bay	O
 of	O
-plenty	O
+Plenty	O
 -	O
-are	O
+Are	O
 you	O
 even	O
 old	O
@@ -2127,18 +2127,18 @@ not	O
 sure	O
 yet	O
 
-john	O
-key	O
+John	O
+Key	O
 ,	O
 and	O
 no	O
 
-maybe	O
-labour	O
+Maybe	B-PER
+Labour	I-PER
 .	O
 
-john	O
-key	O
+John	O
+Key	O
 is	O
 too	O
 busy	O
@@ -2156,16 +2156,16 @@ us	O
 pay	O
 .	O
 
-yes	O
+Yes	O
 ,	O
-i	O
+I	O
 have	O
 usually	O
 voted	O
-national	O
+National	O
 .	O
 
-i	O
+I	O
 do	O
 see	O
 myself	O
@@ -2173,19 +2173,19 @@ as	O
 a	O
 conservative	O
 
-arriving	O
+Arriving	O
 in	O
-auckland	O
+Auckland	O
 on	O
 a	O
 direct	O
 flight	O
 from	O
-canada	O
+Canada	O
 .	O
 ?	O
 
-will	O
+Will	O
 we	O
 be	O
 allowed	O
@@ -2193,16 +2193,16 @@ to	O
 take	O
 duty	O
 free	O
-bottles	O
+bottles	B-PER
 onto	O
 our	O
 connecting	O
 flight	O
 to	O
-christchurch	O
+Christchurch	B-LOC
 ?	O
 
-in	O
+In	O
 our	O
 hand	O
 luggage	O
@@ -2219,10 +2219,10 @@ checked	O
 luggage	O
 ?	O
 
-yes	O
+Yes	B-ORG
 .	O
 
-i	O
+I	O
 do	O
 n	O
 '	O
@@ -2231,28 +2231,28 @@ think	O
 it	O
 matters	O
 
-we	O
+We	O
 '	O
 ll	O
 see	O
 you	O
 on	O
 '	O
-border	O
-patrol	O
+Border	B-ORG
+Patrol	I-ORG
 '	O
 
-yes	O
+Yes	O
 you	O
 can	O
 carry	O
 your	O
 duty	O
 free	O
-bottles	O
+bottles	B-PER
 ,	O
 and	O
-liquids	O
+liquids	B-MISC
 onto	O
 your	O
 connection	O
@@ -2267,15 +2267,15 @@ flight	O
 -	O
 )	O
 
-studying	O
+Studying	O
 in	O
-quebec	O
+Quebec	B-MISC
 ,	O
-canada	O
+Canada	O
 ?	O
 
-if	O
-i	O
+If	O
+I	O
 went	O
 into	O
 the	O
@@ -2292,22 +2292,22 @@ in	O
 mind	O
 .	O
 
-say	O
+Say	O
 after	O
-i	O
+I	O
 finished	O
 those	O
 2	O
 years	O
 and	O
-i	O
+I	O
 found	O
 a	O
 job	O
 .	O
 
 would	O
-i	O
+I	O
 be	O
 able	O
 to	O
@@ -2325,7 +2325,7 @@ university	O
 to	O
 get	O
 a	O
-bachelor	O
+Bachelor	O
 s	O
 degree	O
 in	O
@@ -2333,16 +2333,16 @@ business	O
 administration	O
 ?	O
 
-any	O
+Any	B-PER
 information	O
 would	O
 help	O
 .	O
 
-thank	O
-you	O
+Thank	B-LOC
+you	B-LOC
 
-you	O
+You	O
 should	O
 be	O
 able	O
@@ -2351,7 +2351,7 @@ no	O
 problem	O
 .	O
 
-universities	O
+Universities	O
 will	O
 take	O
 you	O
@@ -2361,7 +2361,7 @@ you	O
 are	O
 .	O
 
-what	O
+What	O
 would	O
 you	O
 call	O
@@ -2371,24 +2371,24 @@ that	O
 hold	O
 up	O
 your	O
-photography	O
+photography	B-PER
 backdrop	O
 ?	O
 
-and	O
+and	B-ORG
 where	O
 can	O
-i	O
+I	O
 find	O
 them	O
 ?	O
 
-background	O
+Background	B-ORG
 support	O
 systems	O
 .	O
 
-or	O
+Or	O
 background	O
 stands	O
 
@@ -2411,7 +2411,7 @@ down	O
 ?	O
 
 odd	O
-considering	O
+considering	I-PER
 this	O
 is	O
 a	O
@@ -2463,9 +2463,9 @@ org	O
 .	O
 mozilla	O
 :	O
-en	O
+en	B-ORG
 -	O
-us	O
+US	O
 :	O
 official	O
 &	O
@@ -2475,7 +2475,7 @@ firefox	O
 -	O
 a	O
 &	O
-safe	O
+safe	B-ORG
 =	O
 active	O
 &	O
@@ -2483,11 +2483,11 @@ sout	O
 =	O
 1	O
 
-backdrop	O
+Backdrop	O
 stand	O
 .	O
 
-google	O
+Google	B-PER
 the	O
 term	O
 or	O
@@ -2532,17 +2532,17 @@ and	O
 why	O
 ?	O
 
-i	O
+I	O
 prefer	O
-royal	O
-caribbean	O
+Royal	O
+Caribbean	O
 out	O
 of	O
 all	O
 these	O
 .	O
 
-there	O
+There	O
 is	O
 so	O
 much	O
@@ -2551,34 +2551,34 @@ do	O
 onboard	O
 .	O
 
-the	O
+The	O
 new	O
-ncl	O
-epic	O
+NCL	O
+Epic	I-PER
 does	O
 sound	O
 amazing	O
 ,	O
 although	O
-i	O
+I	O
 have	O
 n	O
 '	O
 t	O
-sailed	O
+sailed	B-LOC
 on	O
 her	O
 yet	O
 .	O
 
-none	O
+None	O
 of	O
 the	O
 above	O
 .	O
 
-of	O
-these	O
+Of	O
+THESE	O
 three	O
 ,	O
 it	O
@@ -2589,15 +2589,15 @@ toss	O
 -	O
 up	O
 between	O
-royal	O
+Royal	O
 and	O
-carnival	O
+Carnival	O
 .	O
 
-ncl	O
+NCL	O
 is	O
-a	O
-notch	O
+a	B-PER
+notch	B-PER
 below	O
 either	O
 ,	O
@@ -2609,8 +2609,8 @@ and	O
 service	O
 .	O
 
-will	O
-usb	O
+Will	B-ORG
+USB	B-ORG
 cell	O
 phone	O
 chargers	O
@@ -2632,15 +2632,15 @@ turned	O
 off	O
 ?	O
 
-mine	O
+Mine	O
 does	O
 .	O
 
-i	O
+I	O
 have	O
 the	O
-htc	O
-evo	O
+HTC	B-PER
+Evo	O
 .	O
 
 depends	O
@@ -2657,7 +2657,7 @@ shut	O
 off	O
 ,	O
 the	O
-usb	O
+USB	O
 ports	O
 are	O
 n	O
@@ -2677,7 +2677,7 @@ your	O
 phone	O
 
 many	O
-pcs	O
+PCs	O
 have	O
 sleep	O
 &	O
@@ -2687,7 +2687,7 @@ now	O
 that	O
 allow	O
 the	O
-pc	O
+PC	O
 to	O
 go	O
 into	O
@@ -2698,7 +2698,7 @@ and	O
 still	O
 allow	O
 the	O
-usb	O
+USB	O
 ports	O
 to	O
 charge	O
@@ -2714,13 +2714,13 @@ good	O
 slogan	O
 for	O
 an	O
-argentinian	O
+Argentinian	O
 restaurant	O
 ?	O
 
 "	O
-in	O
-argentina	B-LOC
+In	O
+Argentina	O
 ,	O
 beef	O
 is	O
@@ -2729,10 +2729,10 @@ revered	O
 respected	O
 ,	O
 and	O
-praised	O
+praised	B-ORG
 .	O
 
-come	O
+Come	O
 see	O
 how	O
 we	O
@@ -2742,26 +2742,26 @@ tradition	O
 .	O
 "	O
 
-a	O
+A	O
 taste	O
 of	O
-argentina	O
+Argentina	O
 .	O
 
-here	O
+Here	O
 are	O
 some	O
 articles	O
 that	O
 discuss	O
 the	O
-details	O
+details	B-LOC
 of	O
 slogan	O
 writing	O
 .	O
 
-why	O
+Why	O
 certain	O
 slogans	O
 work	O
@@ -2774,7 +2774,7 @@ n	O
 t	O
 .	O
 
-you	O
+You	O
 will	O
 find	O
 these	O
@@ -2783,13 +2783,13 @@ in	O
 writing	O
 a	O
 new	O
-slogan	O
+slogan	B-LOC
 .	O
 
-a	O
-look	O
+A	O
+Look	O
 at	O
-slogans	O
+Slogans	O
 -	O
 http	O
 :	O
@@ -2813,9 +2813,9 @@ slogans	O
 .	O
 htm	O
 
-unique	O
-selling	O
-proposition	O
+Unique	B-ORG
+Selling	O
+Proposition	O
 -	O
 http	O
 :	O
@@ -2835,36 +2835,36 @@ unique	O
 -	O
 selling	O
 -	O
-proposition	O
+proposition	B-MISC
 .	O
 htm	O
 
-good	O
+Good	O
 luck	O
 !	O
 
-no	O
-mad	O
-cow	O
+No	O
+Mad	O
+Cow	O
 -	O
 -	O
 -	O
-guaranteed	O
+Guaranteed	O
 !	O
 
-which	O
-compact	O
-system	O
-camera	O
-should	O
-i	O
-get	O
+Which	B-ORG
+Compact	O
+System	O
+Camera	O
+Should	B-PER
+I	O
+Get	O
 .	O
 .	O
 .	O
 ?	O
 
-i	O
+I	O
 '	O
 m	O
 looking	O
@@ -2889,7 +2889,7 @@ pictures	O
 /	O
 videos	O
 
-i	O
+I	O
 '	O
 m	O
 planning	O
@@ -2911,12 +2911,12 @@ one	O
 (	O
 s	O
 )	O
-i	O
+I	O
 should	O
 purchase	O
 .	O
 
-also	O
+Also	O
 how	O
 much	O
 do	O
@@ -2924,8 +2924,8 @@ compact	O
 system	O
 cameras	O
 drop	O
-on	O
-boxing	O
+on	B-PER
+boxing	B-PER
 day	O
 ?	O
 
@@ -2953,14 +2953,14 @@ at	O
 sony	O
 wx10	O
 
-i	O
+I	O
 need	O
 creative	O
 art	O
 ideas	O
 ?	O
 
-what	O
+What	O
 are	O
 some	O
 cool	O
@@ -2972,7 +2972,7 @@ postor	O
 usint	O
 the	O
 word	O
-mad	O
+MAD	B-LOC
 on	O
 a	O
 white	O
@@ -2985,26 +2985,26 @@ artsy	O
 way	O
 ?	O
 
-the	O
+The	O
 actual	O
 word	O
 "	O
-mad	O
+MAD	B-LOC
 "	O
 has	O
 to	O
 be	O
 on	O
-the	O
-cover	O
+the	B-ORG
+cover	B-ORG
 and	O
-incorporated	O
+incorporated	B-ORG
 into	O
-the	O
-image	O
+the	B-ORG
+image	B-ORG
 .	O
 
-mad	O
+MAD	B-LOC
 means	O
 crazy	O
 ,	O
@@ -3047,12 +3047,12 @@ look	O
 artistic	O
 .	O
 
-use	O
-photoshop	O
+use	B-PER
+photoshop	B-PER
 .	O
 
 tttthhhhh	O
-madonna	O
+Madonna	O
 !	O
 
 what	O
@@ -3077,8 +3077,8 @@ took	O
 place	O
 ?	O
 
-i	O
-ca	O
+I	B-PER
+ca	I-PER
 nt	O
 find	O
 any	O
@@ -3086,48 +3086,48 @@ information	O
 about	O
 it	O
 
-when	O
+When	O
 the	O
-french	O
+French	O
 returned	O
 to	O
-indochina	B-LOC
+Indochina	O
 at	O
 the	O
 end	O
 of	O
-ww	O
-ii	O
+WW	O
+II	O
 the	O
-viet	O
-minh	O
+Viet	O
+Minh	O
 were	O
 in	O
 control	O
 of	O
 the	O
-red	O
-river	O
-delta	O
+Red	O
+River	O
+Delta	O
 .	O
 
-they	O
+They	O
 chased	O
 the	O
-communists	O
+Communists	O
 out	O
 of	O
 the	O
 capital	O
 (	O
-hanoi	O
+Hanoi	O
 )	O
 and	O
 retook	O
 control	O
 .	O
 
-is	O
+Is	O
 that	O
 what	O
 you	O
@@ -3136,15 +3136,15 @@ referring	O
 to	O
 ?	O
 
-you	O
+You	O
 need	O
 to	O
 check	O
 out	O
 the	O
-french	O
-indochina	O
-war	O
+French	O
+Indochina	O
+War	O
 (	O
 1946	O
 -	O
@@ -3152,8 +3152,8 @@ war	O
 )	O
 not	O
 the	O
-vietnam	O
-war	O
+Vietnam	O
+War	O
 (	O
 1957	O
 -	O
@@ -3161,7 +3161,7 @@ war	O
 )	O
 .	O
 
-does	O
+Does	B-PER
 a	O
 pacman	O
 absolutely	O
@@ -3171,26 +3171,26 @@ uv	O
 lamp	O
 ?	O
 
-or	O
+Or	O
 maybe	O
-something	O
-humid	O
+something	B-ORG
+humid	B-ORG
 or	O
 heat	O
 ?	O
 
-i	O
+I	O
 assume	O
 you	O
 are	O
-talking	O
-about	O
+talking	B-PER
+about	I-PER
 a	O
 pacman	O
-frog	O
+frog	B-PER
 .	O
 
-no	O
+No	O
 ,	O
 technically	O
 they	O
@@ -3198,7 +3198,7 @@ do	O
 not	O
 need	O
 a	O
-uvb	O
+UVB	B-ORG
 light	O
 ;	O
 they	O
@@ -3206,7 +3206,7 @@ are	O
 nocturnal	O
 .	O
 
-however	O
+However	O
 ,	O
 it	O
 certainly	O
@@ -3223,7 +3223,7 @@ provide	O
 one	O
 .	O
 
-a	O
+A	O
 pacman	O
 frog	O
 will	O
@@ -3232,7 +3232,7 @@ a	O
 heat	O
 source	O
 that	O
-creates	O
+creates	B-PER
 a	O
 basking	O
 temp	O
@@ -3242,7 +3242,7 @@ upper	O
 80	O
 '	O
 s	O
-f	O
+F	O
 for	O
 at	O
 least	O
@@ -3264,7 +3264,7 @@ use	O
 a	O
 calcium	O
 supplement	O
-twice	O
+twice	B-MISC
 a	O
 week	O
 ;	O
@@ -3273,7 +3273,7 @@ reptiles	O
 are	O
 prone	O
 to	O
-calcium	O
+calcium	B-PER
 deficiency	O
 .	O
 
@@ -3305,8 +3305,8 @@ nice	O
 but	O
 also	O
 something	O
-extremely	O
-unique	O
+extremely	B-PER
+unique	B-PER
 .	O
 
 i	O
@@ -3354,7 +3354,7 @@ helpful	O
 )	O
 thanks	O
 
-why	O
+Why	O
 not	O
 put	O
 together	O
@@ -3370,11 +3370,11 @@ have	O
 a	O
 date	O
 on	O
-treasure	O
-island	O
+Treasure	B-ORG
+Island	O
 .	O
 
-cheap	O
+Cheap	O
 ,	O
 great	O
 view	O
@@ -3383,16 +3383,16 @@ time	O
 together	O
 .	O
 
-there	O
+There	O
 are	O
 plenty	O
 of	O
-cheap	O
-restaurants	O
+cheap	B-PER
+restaurants	I-PER
 .	O
 
-try	O
-sanfranguide	O
+Try	O
+SanFranGuide	O
 .	O
 com	O
 
@@ -3422,7 +3422,7 @@ eat	O
 but	O
 she	O
 could	O
-walk	O
+walk	B-MISC
 now	O
 her	O
 hid	O
@@ -3498,7 +3498,7 @@ her	O
 by	O
 hand	O
 
-take	O
+Take	O
 her	O
 to	O
 the	O
@@ -3512,7 +3512,7 @@ to	O
 the	O
 vet	O
 
-how	O
+How	O
 much	O
 would	O
 it	O
@@ -3526,14 +3526,14 @@ and	O
 three	O
 friends	O
 to	O
-andiamo	O
+Andiamo	O
 s	O
 restaurant	O
 for	O
 dinner	O
 ?	O
 
-hi	O
+Hi	O
 ,	O
 i	O
 '	O
@@ -3564,7 +3564,7 @@ my	O
 birthday	O
 .	O
 
-i	O
+I	O
 really	O
 want	O
 to	O
@@ -3594,7 +3594,7 @@ to	O
 eat	O
 there	O
 
-have	O
+Have	O
 no	O
 idea	O
 what	O
@@ -3609,7 +3609,7 @@ it	O
 is	O
 .	O
 
-best	O
+Best	O
 count	O
 on	O
 $	O
@@ -3621,7 +3621,7 @@ matter	O
 what	O
 .	O
 
-or	O
+Or	O
 more	O
 if	O
 you	O
@@ -3629,41 +3629,41 @@ have	O
 drinks	O
 .	O
 
-i	O
+I	O
 need	O
 suggestions	O
 for	O
-san	O
-francisco	O
-restaurants	O
+San	O
+Francisco	B-ORG
+restaurants	I-ORG
 with	O
 good	O
 food	O
 and	O
 good	O
-catering	O
+catering	B-ORG
 service	O
 .	O
 ?	O
 
-i	O
+I	O
 need	O
 suggestions	O
 on	O
 restaurants	O
 in	O
-san	O
-francisco	O
+San	O
+Francisco	O
 with	O
 good	O
 food	O
 and	O
 good	O
-catering	O
+catering	B-ORG
 service	O
 .	O
 
-i	O
+I	O
 have	O
 two	O
 upcoming	O
@@ -3679,34 +3679,34 @@ for	O
 21	O
 .	O
 
-american	O
-food	O
+American	O
+Food	O
 ,	O
-soul	O
-food	O
+Soul	O
+Food	O
 ,	O
-mexican	O
+Mexican	O
 ,	O
-italian	O
+Italian	O
 ,	O
 and	O
-chinese	O
+Chinese	O
 are	O
 the	O
 options	O
 .	O
 
-here	O
+Here	O
 is	O
 a	O
 great	O
 list	O
 of	O
 different	O
-restaurants	O
+restaurants	B-ORG
 in	O
-san	O
-francisco	O
+San	O
+Francisco	O
 
 http	O
 :	O
@@ -3715,8 +3715,8 @@ http	O
 sanfranguide	O
 .	O
 com	O
-/	O
-restaurants	O
+/	B-ORG
+restaurants	B-ORG
 /	O
 
 well	O
@@ -3730,17 +3730,17 @@ budget	O
 ,	O
 i	O
 recommend	O
-hakka	O
-restaurant	O
+Hakka	O
+Restaurant	O
 for	O
 chinese	O
 food	O
 
-it	O
+it	B-PER
 s	O
 cheap	O
 and	O
-it	O
+it	B-PER
 s	O
 good	O
 !	O
@@ -3755,10 +3755,10 @@ but	O
 it	O
 s	O
 super	O
-expensive	O
+expensive	B-LOC
 
 try	O
-yelp	O
+yelp	B-PER
 .	O
 com	O
 
@@ -3772,21 +3772,21 @@ in	O
 ireland	O
 ?	O
 
-depends	O
+Depends	B-ORG
 of	O
 what	O
 .	O
 
-ounces	O
+Ounces	O
 measure	O
 weight	O
 ,	O
 pints	O
 measure	O
-volume	O
+volume	B-PER
 .	O
 
-if	O
+If	O
 you	O
 mean	O
 fluid	O
@@ -3800,17 +3800,17 @@ to	O
 the	O
 16	O
 in	O
-america	O
+America	O
 .	O
 
-an	O
-irish	O
+An	O
+Irish	O
 pint	O
 is	O
 larger	O
 than	O
 a	O
-us	O
+US	O
 one	O
 .	O
 
@@ -3819,14 +3819,14 @@ fluid	O
 ounces	O
 in	O
 a	O
-pint	O
+Pint	O
 in	O
-ireland	O
+Ireland	O
 
 as	O
-r	O
+R	O
 -	O
-g	O
+G	O
 said	O
 ,	O
 there	O
@@ -3835,15 +3835,15 @@ only	O
 16	O
 in	O
 an	O
-american	B-MISC
+American	O
 one	O
 .	O
 
-know	O
+Know	O
 this	O
 well	O
 because	O
-i	O
+I	O
 remember	O
 an	O
 '	O
@@ -3880,7 +3880,7 @@ sized	O
 pints	O
 .	O
 
-that	O
+That	O
 place	O
 did	O
 n	O
@@ -3891,7 +3891,7 @@ open	O
 too	O
 long	O
 :	O
-d	O
+D	O
 
 need	O
 help	O
@@ -3902,8 +3902,8 @@ music	O
 
 i	O
 love	O
-the	O
-script	O
+The	O
+Script	O
 and	O
 know	O
 the	O
@@ -3921,20 +3921,20 @@ like	O
 them	O
 pleasseee	O
 
-the	O
+The	O
 thing	O
 about	O
-the	O
-script	O
+The	O
+Script	O
 is	O
 they	O
 do	O
 not	O
 sound	O
 that	O
-irish	O
+Irish	O
 ,	O
-i	O
+I	O
 was	O
 surprised	O
 to	O
@@ -3942,43 +3942,43 @@ hear	O
 they	O
 were	O
 from	O
-dublin	O
+Dublin	O
 .	O
 
-well	O
+Well	O
 if	O
 you	O
 are	O
 interested	O
 ,	O
-i	O
+I	O
 suggest	O
 you	O
 have	O
 a	O
 look	O
 at	O
-general	O
-fiasco	O
+General	O
+Fiasco	O
 ,	O
-two	O
-door	O
-cinema	O
-club	O
+Two	O
+Door	O
+Cinema	O
+Club	O
 and	O
-wallis	O
-bird	O
+Wallis	O
+Bird	O
 .	O
 
-i	O
+I	O
 think	O
 you	O
 will	O
-be	O
-pleased	O
+be	B-PER
+pleased	B-PER
 .	O
 
-i	O
+I	O
 doubt	O
 you	O
 will	O
@@ -3989,26 +3989,26 @@ answer	O
 in	O
 the	O
 "	O
-travel	O
+TRAVEL	O
 "	O
 section	O
 .	O
 
 *	O
-ireland	O
+Ireland	O
 
-and	O
+And	O
 there	O
 '	O
 s	O
 nothing	O
 distinctly	O
-irish	O
+Irish	O
 about	O
 them	O
 .	O
 
-you	O
+You	O
 '	O
 d	O
 find	O
@@ -4020,12 +4020,12 @@ that	O
 are	O
 from	O
 the	O
-uk	O
+UK	O
 and	O
-us	O
+US	O
 .	O
 
-women	O
+Women	O
 '	O
 s	O
 rain	O
@@ -4035,12 +4035,12 @@ coat	O
 .	O
 where	O
 can	O
-i	O
+I	O
 find	O
 one	O
 ?	O
 
-i	O
+I	O
 '	O
 m	O
 going	O
@@ -4048,11 +4048,11 @@ on	O
 a	O
 trip	O
 to	O
-europe	O
+Europe	O
 soon	O
 ,	O
 and	O
-i	O
+I	O
 need	O
 to	O
 find	O
@@ -4063,7 +4063,7 @@ quality	O
 raincoat	O
 .	O
 
-i	O
+I	O
 '	O
 ve	O
 looked	O
@@ -4078,18 +4078,18 @@ one	O
 anywhere	O
 !	O
 
-i	O
+I	O
 would	O
 prefer	O
 a	O
 simple	O
 ,	O
-fitted	O
+fitted	B-PER
 black	O
 one	O
 .	O
 
-it	O
+It	O
 actually	O
 needs	O
 to	O
@@ -4100,8 +4100,8 @@ waterproof	O
 the	O
 last	O
 one	O
-i	O
-bought	O
+I	O
+bought	B-MISC
 had	O
 me	O
 soaked	O
@@ -4115,7 +4115,7 @@ moderate	O
 rain	O
 .	O
 
-i	O
+I	O
 '	O
 ll	O
 pay	O
@@ -4127,19 +4127,19 @@ to	O
 for	O
 it	O
 if	O
-i	O
+I	O
 have	O
 to	O
 .	O
 
-look	O
+Look	O
 on	O
 the	O
 debenhams	O
 website	O
 
 in	O
-the	O
+the	B-ORG
 craghoppers	O
 section	O
 
@@ -4170,7 +4170,7 @@ women	O
 /	O
 craghoppers	O
 #	O
-catalogid	O
+catalogId	O
 =	O
 10001	O
 &	O
@@ -4180,17 +4180,17 @@ lid	O
 /	O
 productsuniverse	O
 /	O
-en	O
+en	B-ORG
 _	O
-gb	O
+GB	O
 /	O
 product	O
 _	O
-online0y	O
+online0Y	O
 /	O
 categories	O
 %	O
-3c0productsuniverse	O
+3C0productsuniverse	O
 _	O
 186610	O
 /	O
@@ -4198,13 +4198,13 @@ brand	O
 _	O
 description0	O
 .	O
-000000e	O
+000000E	O
 +	O
 000craghoppers0	O
 /	O
 categories	O
 %	O
-3c0productsuniverse	O
+3C0productsuniverse	O
 _	O
 18661	O
 _	O
@@ -4216,84 +4216,84 @@ default	O
 &	O
 sfn	O
 =	O
-categories	O
+Categories	O
 &	O
 sfv	O
 =	O
-coats	O
+Coats	O
 +	O
 %	O
 26amp0	O
 +	O
 jackets	O
 &	O
-storeid	O
+storeId	O
 =	O
 10001	O
 
-i	O
+I	O
 have	O
 a	O
-kodak	O
-camera	O
+Kodak	O
+Camera	O
 (	O
 10	O
 .	O
 2	O
-megapixels	O
+Megapixels	B-ORG
 )	O
 .	O
 .	O
 .	O
-kodak	O
-af	O
+Kodak	O
+AF	O
 5x	O
-optical	O
-lens	O
+OPTICAL	O
+LENS	O
 .	O
 .	O
 .	O
 how	O
 do	O
-i	O
+I	O
 pause	O
 it	O
 while	O
 recording	O
 ?	O
 
-i	O
+I	O
 have	O
 a	O
-kodak	O
-camera	O
+Kodak	O
+Camera	O
 (	O
 10	O
 .	O
 2	O
-megapixels	O
+Megapixels	B-ORG
 )	O
 .	O
 .	O
 .	O
-kodak	O
-af	O
+Kodak	O
+AF	O
 5x	O
-optical	O
-lens	O
+OPTICAL	O
+LENS	O
 .	O
 .	O
 .	O
 how	O
 do	O
-i	O
+I	O
 pause	O
 it	O
 while	O
 recording	O
 ?	O
 
-you	O
+You	O
 do	O
 n	O
 '	O
@@ -4316,7 +4316,7 @@ digital	O
 recording	O
 .	O
 
-that	O
+That	O
 '	O
 s	O
 because	O
@@ -4341,7 +4341,7 @@ memory	O
 card	O
 .	O
 
-when	O
+When	O
 you	O
 press	O
 the	O
@@ -4365,7 +4365,7 @@ no	O
 pause	O
 .	O
 
-all	O
+All	O
 you	O
 can	O
 do	O
@@ -4385,16 +4385,16 @@ on	O
 software	O
 .	O
 
-i	O
+I	O
 have	O
 a	O
-nacho	O
-libre	O
+Nacho	O
+Libre	O
 question	O
 .	O
 ?	O
 
-when	O
+When	O
 nacho	O
 is	O
 driving	O
@@ -4417,7 +4417,7 @@ like	O
 your	O
 blouse	O
 or	O
-i	O
+I	O
 like	O
 your	O
 cow	O
@@ -4427,7 +4427,7 @@ friend	O
 thinks	O
 he	O
 says	O
-i	O
+I	O
 like	O
 your	O
 blouse	O
@@ -4442,7 +4442,7 @@ make	O
 sense	O
 .	O
 
-i	O
+I	O
 know	O
 it	O
 s	O
@@ -4454,7 +4454,7 @@ catagory	O
 but	O
 still	O
 ,	O
-i	O
+I	O
 wrote	O
 this	O
 question	O
@@ -4470,9 +4470,9 @@ critisize	O
 me	O
 .	O
 
-okay	O
+Okay	B-LOC
 ,	O
-first	O
+FIRST	O
 ,	O
 you	O
 have	O
@@ -4481,23 +4481,23 @@ a	O
 question	O
 about	O
 an	O
-american	O
+American	O
 movie	O
 ,	O
 set	O
 in	O
-mexico	O
+Mexico	O
 ,	O
 in	O
 the	O
-dining	O
-out	O
+Dining	O
+Out	O
 in	O
-argentina	O
+Argentina	O
 category	O
 .	O
 
-do	O
+Do	O
 you	O
 get	O
 what	O
@@ -4509,7 +4509,7 @@ this	O
 picture	O
 ?	O
 
-no	O
+No	O
 .	O
 .	O
 .	O
@@ -4519,23 +4519,23 @@ s	O
 all	O
 .	O
 
-no	O
+No	O
 second	O
 .	O
 
-nacho	O
-libre	O
+Nacho	O
+Libre	O
 is	O
 suppose	O
 to	O
 be	O
 inspired	O
 in	O
-mexicans	B-MISC
+Mexicans	O
 ,	O
 not	O
 in	O
-argentineans	O
+Argentineans	O
 .	O
 
 is	O
@@ -4548,22 +4548,22 @@ get	O
 an	O
 ice	O
 -	O
-cream	O
+cream	B-LOC
 sundae	O
 from	O
 in	O
-invercargill	O
-new	O
-zealand	O
+Invercargill	O
+New	O
+Zealand	O
 ?	O
 
 so	O
 i	O
 live	O
 in	O
-invercargill	O
-new	O
-zealand	O
+Invercargill	O
+New	O
+Zealand	O
 and	O
 i	O
 want	O
@@ -4580,7 +4580,7 @@ buy	O
 an	O
 ice	O
 -	O
-cream	O
+cream	B-ORG
 sundae	O
 from	O
 other	O
@@ -4590,8 +4590,8 @@ donald	O
 s	O
 lol	O
 
-fast	O
-food	O
+Fast	B-ORG
+food	I-ORG
 chains	O
 ,	O
 supermarkets	O
@@ -4601,14 +4601,14 @@ dairies	O
 you	O
 live	O
 in	O
-nz	O
+NZ	O
 and	O
 you	O
 eat	O
-mcdonald	O
-s	O
-ice	O
-cream	O
+McDonald	B-ORG
+s	B-PER
+ice	B-ORG
+cream	I-ORG
 ?	O
 
 you	O
@@ -4617,7 +4617,7 @@ re	O
 mad	O
 !	O
 
-any	O
+Any	B-PER
 of	O
 the	O
 tip	O
@@ -4628,7 +4628,7 @@ have	O
 great	O
 ice	O
 -	O
-cream	O
+cream	B-LOC
 ,	O
 get	O
 them	O
@@ -4639,16 +4639,16 @@ up	O
 .	O
 
 any	O
-ice	O
-cream	O
-in	O
-nz	O
+Ice	O
+Cream	O
+In	O
+NZ	O
 no	O
 matter	O
 where	O
 as	O
-new	O
-zealand	O
+New	O
+Zealand	O
 has	O
 the	O
 best	O
@@ -4661,23 +4661,23 @@ cream	O
 in	O
 the	O
 world	O
-i	O
+I	O
 was	O
 in	O
-nz	O
+NZ	O
 for	O
 a	O
 few	O
 weeks	O
 had	O
 some	O
-ice	O
-cream	O
+Ice	O
+Cream	O
 and	O
 really	O
 enjoyed	O
 it	O
-i	O
+I	O
 will	O
 go	O
 back	O
@@ -4685,15 +4685,15 @@ just	O
 to	O
 eat	O
 some	O
-ice	O
-cream	O
+Ice	O
+Cream	O
 
 best	O
-burger	O
+burger	B-PER
 chain	O
 in	O
 the	O
-chicago	O
+Chicago	O
 area	O
 ?	O
 
@@ -4713,7 +4713,7 @@ for	O
 example	O
 burger	O
 king	O
-portillo	O
+portillo	B-MISC
 s	O
 white	O
 castle	O
@@ -4725,12 +4725,12 @@ the	O
 best	O
 ?	O
 
-red	O
-robin	O
+Red	O
+Robin	O
 .	O
 
-onion	O
-rings	O
+Onion	O
+Rings	B-ORG
 are	O
 great	O
 and	O
@@ -4740,25 +4740,25 @@ are	O
 endless	O
 .	O
 
-fudrucker	O
+Fudrucker	O
 s	O
 .	O
 
-idk	O
+idk	B-PER
 ur	O
 choice	O
 
-chain	O
+Chain	O
 ?	O
 
-does	O
+Does	B-PER
 5	O
 make	O
 a	O
 chain	O
 ?	O
 
-hackney	O
+Hackney	O
 '	O
 s	O
 has	O
@@ -4774,7 +4774,7 @@ years	O
 ago	O
 .	O
 
-there	O
+There	O
 are	O
 currently	O
 5	O
@@ -4792,19 +4792,19 @@ hackneys	O
 net	O
 /	O
 
-the	O
+The	O
 latest	O
 spot	O
 for	O
 a	O
 real	O
-hackney	O
+Hackney	O
 '	O
 s	O
 is	O
-printers	O
+Printers	O
 '	O
-row	O
+Row	O
 :	O
 
 http	O
@@ -4818,21 +4818,21 @@ hackneysprintersrow	O
 net	O
 /	O
 
-see	O
+See	B-ORG
 what	O
-dd	O
+DD	O
 &	O
-d	O
+D	O
 showed	O
 at	O
 the	O
 original	O
 place	O
 on	O
-harms	O
-rd	O
+Harms	O
+Rd	O
 in	O
-glenview	O
+Glenview	O
 :	O
 
 http	O
@@ -4849,9 +4849,9 @@ watch	O
 ?	O
 v	O
 =	O
-q2ldf0xu3ni	O
+q2lDF0XU3NI	O
 
-along	O
+Along	O
 with	O
 the	O
 great	O
@@ -4869,7 +4869,7 @@ with	O
 someone	O
 .	O
 
-otherwise	O
+Otherwise	O
 a	O
 1	O
 /	O
@@ -4897,10 +4897,10 @@ jellybeanjill13	O
 532522805	O
 /	O
 
-my	O
+My	O
 dog	O
 has	O
-threw	O
+threw	B-LOC
 up	O
 yellow	O
 bile	O
@@ -4914,13 +4914,13 @@ have	O
 dhirea	O
 .	O
 
-what	O
+What	O
 should	O
-i	O
+I	O
 do	O
 ?	O
 
-i	O
+I	O
 '	O
 ve	O
 tried	O
@@ -4935,19 +4935,19 @@ eat	O
 anything	O
 .	O
 
-what	O
+What	O
 could	O
 it	O
 be	O
 ?	O
 
-should	O
-i	O
+Should	B-ORG
+I	I-ORG
 be	O
 concerned	O
 ?	O
 
-call	O
+Call	O
 a	O
 vet	O
 would	O
@@ -4960,8 +4960,8 @@ a	O
 sick	O
 dog	O
 
-very	O
-concerned	O
+VERY	O
+CONCERNED	I-ORG
 !	O
 !	O
 !	O
@@ -4973,7 +4973,7 @@ dog	O
 to	O
 the	O
 vet	O
-asap	O
+ASAP	O
 !	O
 !	O
 !	O
@@ -5040,15 +5040,15 @@ to	O
 be	O
 attended	O
 to	O
-right	O
-away	O
+RIGHT	O
+AWAY	O
 !	O
 !	O
 !	O
 
 or	O
 has	O
-acquired	O
+acquired	B-PER
 some	O
 type	O
 of	O
@@ -5071,7 +5071,7 @@ there	O
 two	O
 statues	O
 of	O
-david	O
+David	O
 ?	O
 
 i	O
@@ -5090,7 +5090,7 @@ are	O
 two	O
 statues	O
 of	O
-david	O
+David	O
 ,	O
 a	O
 bronze	O
@@ -5100,7 +5100,7 @@ marble	O
 one	O
 .	O
 
-michelangelo	B-PER
+Michelangelo	O
 made	O
 the	O
 marble	O
@@ -5112,7 +5112,7 @@ he	O
 do	O
 another	O
 if	O
-donatello	B-PER
+Donatello	O
 had	O
 already	O
 made	O
@@ -5132,7 +5132,7 @@ there	O
 two	O
 statues	O
 of	O
-david	O
+David	O
 ?	O
 
 different	O
@@ -5149,10 +5149,10 @@ as	O
 a	O
 young	O
 sheep	O
-herder	O
+Herder	O
 ,	O
 the	O
-michelangelo	O
+Michelangelo	O
 is	O
 the	O
 grown	O
@@ -5164,18 +5164,18 @@ slayer	O
 and	O
 king	O
 
-because	O
+Because	O
 he	O
 liked	O
 making	O
 statues	O
 of	O
-david	O
+David	O
 !	O
 :	O
-d	O
+D	O
 
-obviously	O
+Obviously	O
 ,	O
 he	O
 should	O
@@ -5199,10 +5199,10 @@ as	O
 another	O
 artist	O
 -	O
-clearly	O
-insulting	O
+clearly	B-PER
+insulting	I-PER
 and	O
-disrespecting	O
+disrespecting	B-PER
 -	O
 wasted	O
 time	O
@@ -5219,27 +5219,27 @@ clothes	O
 on	O
 .	O
 
-name	O
+Name	B-PER
 of	O
 specific	O
-hibachi	O
+Hibachi	O
 restaurant	O
 in	O
-chicago	O
+Chicago	O
 ?	O
 
-i	O
+I	O
 have	O
 a	O
 friend	O
 out	O
 in	O
-chicago	O
+Chicago	O
 this	O
 week	O
 ,	O
 and	O
-i	O
+I	O
 am	O
 trying	O
 to	O
@@ -5263,14 +5263,14 @@ years	O
 ago	O
 .	O
 
-i	O
+I	O
 think	O
 it	O
 was	O
 in	O
 the	O
-lincoln	O
-square	O
+Lincoln	O
+Square	O
 area	O
 but	O
 do	O
@@ -5283,7 +5283,7 @@ on	O
 that	O
 .	O
 
-it	O
+It	O
 '	O
 s	O
 '	O
@@ -5318,7 +5318,7 @@ on	O
 it	O
 .	O
 
-four	O
+Four	O
 guys	O
 around	O
 a	O
@@ -5345,7 +5345,7 @@ your	O
 table	O
 .	O
 
-all	O
+All	O
 -	O
 you	O
 can	O
@@ -5355,12 +5355,12 @@ style	O
 deal	O
 .	O
 
-it	O
+It	O
 was	O
 pretty	O
 epic	O
 as	O
-i	O
+I	O
 remember	O
 and	O
 would	O
@@ -5372,17 +5372,17 @@ friend	O
 there	O
 .	O
 
-any	O
+Any	B-PER
 help	O
 ?	O
 
-that	O
+That	O
 is	O
-flat	O
-top	O
-grill	O
+Flat	O
+Top	O
+Grill	O
 
-what	O
+What	O
 '	O
 s	O
 the	O
@@ -5397,9 +5397,9 @@ the	O
 world	O
 ?	O
 
-well	O
+Well	O
 ,	O
-i	O
+I	O
 '	O
 m	O
 about	O
@@ -5412,7 +5412,7 @@ a	O
 year	O
 ,	O
 and	O
-i	O
+I	O
 '	O
 m	O
 planning	O
@@ -5422,7 +5422,7 @@ medical	O
 school	O
 .	O
 
-but	O
+But	O
 since	O
 in	O
 my	O
@@ -5435,7 +5435,7 @@ minimum	O
 years	O
 ,	O
 and	O
-i	O
+I	O
 want	O
 to	O
 go	O
@@ -5449,7 +5449,7 @@ you	O
 think	O
 ,	O
 should	O
-i	O
+I	O
 do	O
 it	O
 before	O
@@ -5459,7 +5459,7 @@ medical	O
 school	O
 ?	O
 
-if	O
+If	O
 you	O
 can	O
 afford	O
@@ -5472,10 +5472,10 @@ by	O
 all	O
 means	O
 ,	O
-go	O
+GO	O
 .	O
 
-if	O
+If	O
 you	O
 have	O
 to	O
@@ -5483,14 +5483,14 @@ wait	O
 ,	O
 due	O
 to	O
-financial	O
+financial	B-PER
 reasons	O
 ,	O
 then	O
 wait	O
 .	O
 
-i	O
+I	O
 would	O
 much	O
 rather	O
@@ -5498,7 +5498,7 @@ put	O
 it	O
 off	O
 until	O
-i	O
+I	O
 can	O
 afford	O
 to	O
@@ -5509,7 +5509,7 @@ of	O
 a	O
 lifetime	O
 as	O
-i	O
+I	O
 '	O
 m	O
 sure	O
@@ -5521,7 +5521,7 @@ to	O
 be	O
 .	O
 
-airfare	O
+Airfare	O
 alone	O
 will	O
 be	O
@@ -5556,7 +5556,7 @@ stops	O
 working	O
 ?	O
 
-my	O
+My	O
 canon	O
 t2i	O
 stops	O
@@ -5626,14 +5626,14 @@ repair	O
 thanks	O
 !	O
 
-sounds	O
+Sounds	O
 simple	O
 enough	O
 to	O
 me	O
 .	O
 
-your	O
+Your	O
 camera	O
 is	O
 n	O
@@ -5647,18 +5647,18 @@ got	O
 warranty	O
 ,	O
 let	O
-canon	O
-deal	O
+Canon	B-PER
+deal	I-PER
 with	O
 it	O
 .	O
 
-i	O
+I	O
 would	O
 agree	O
 .	O
 
-i	O
+I	O
 shoot	O
 a	O
 t1i	O
@@ -5673,7 +5673,7 @@ an	O
 issue	O
 .	O
 
-i	O
+I	O
 also	O
 agree	O
 it	O
@@ -5686,15 +5686,15 @@ get	O
 in	O
 touch	O
 with	O
-canon	O
+Canon	O
 .	O
 
-it	O
+It	O
 sounds	O
 like	O
 a	O
-firmware	O
-issue	O
+firmware	B-ORG
+issue	I-ORG
 and	O
 the	O
 camera	O
@@ -5733,19 +5733,19 @@ a	O
 camera	O
 .	O
 
-call	O
-canon	O
+Call	B-ORG
+Canon	I-ORG
 
-cheapest	O
+Cheapest	O
 airline	O
 ticket	O
 from	O
-raleigh	O
+Raleigh	O
 to	O
-philippines	O
+Philippines	O
 ?	O
 
-i	O
+I	O
 '	O
 m	O
 going	O
@@ -5754,47 +5754,47 @@ a	O
 vacation	O
 to	O
 the	O
-philippines	O
+Philippines	O
 in	O
-may	O
+May	O
 2012	O
 ,	O
 and	O
-i	O
+I	O
 '	O
 m	O
 starting	O
 from	O
-raleigh	O
+Raleigh	O
 ,	O
-nc	O
+NC	O
 (	O
-rdu	O
-airport	O
+RDU	O
+Airport	O
 )	O
 .	O
 
-which	O
+Which	B-ORG
 airlines	O
 should	O
-i	O
+I	O
 look	O
 into	O
 and	O
 when	O
 should	O
-i	O
+I	O
 buy	O
 my	O
 ticket	O
 ?	O
 
-the	O
+The	O
 sooner	O
 the	O
 better	O
 but	O
-i	O
+I	O
 '	O
 d	O
 probably	O
@@ -5805,10 +5805,10 @@ the	O
 holidays	O
 .	O
 
-use	O
-travelocity	O
+Use	O
+Travelocity	B-LOC
 or	O
-expedia	O
+Expedia	O
 and	O
 see	O
 what	O
@@ -5818,12 +5818,12 @@ up	O
 with	O
 .	O
 
-my	O
+My	O
 friend	O
 goes	O
 to	O
 the	O
-phils	O
+Phils	O
 every	O
 6	O
 months	O
@@ -5834,8 +5834,8 @@ she	O
 has	O
 found	O
 that	O
-korean	B-MISC
-air	O
+Korean	O
+Air	O
 has	O
 had	O
 the	O
@@ -5844,21 +5844,21 @@ fares	O
 lately	O
 .	O
 
-raleigh	O
+Raleigh	O
 to	O
-chicago	O
+Chicago	O
 ,	O
-chicago	O
+Chicago	O
 to	O
-seoul	O
+Seoul	O
 and	O
 then	O
-seoul	O
+Seoul	O
 to	O
-manila	O
+Manila	O
 .	O
 
-compare	O
+Compare	O
 compare	O
 compare	O
 -	O
@@ -5874,13 +5874,13 @@ best	O
 deal	O
 .	O
 
-ask	O
+Ask	O
 a	O
 travel	O
 agent	O
 !	O
 
-on	O
+On	O
 my	O
 last	O
 6	O
@@ -5889,32 +5889,32 @@ here	O
 from	O
 the	O
 states	O
-i	O
+I	O
 used	O
 "	O
-fly	O
+Fly	O
 genesis	O
 "	O
 based	O
 in	O
-seattle	O
+Seattle	O
 ,	O
-wa	O
+Wa	O
 .	O
 
-they	O
+They	O
 gave	O
 the	O
 best	O
 service	O
 &	O
 rates	O
-i	O
+I	O
 could	O
 find	O
 .	O
 
-what	O
+What	O
 is	O
 the	O
 best	O
@@ -5923,12 +5923,12 @@ to	O
 get	O
 discounts	O
 for	O
-san	O
-francisco	O
-restaurants	O
+San	O
+Francisco	B-PER
+restaurants	I-ORG
 ?	O
 
-i	O
+I	O
 just	O
 moved	O
 into	O
@@ -5936,7 +5936,7 @@ the	O
 city	O
 ,	O
 and	O
-i	O
+I	O
 '	O
 m	O
 wondering	O
@@ -5946,7 +5946,7 @@ there	O
 s	O
 a	O
 place	O
-i	O
+I	O
 can	O
 get	O
 good	O
@@ -5956,7 +5956,7 @@ restaurants	O
 here	O
 .	O
 
-i	O
+I	O
 do	O
 n	O
 '	O
@@ -5975,10 +5975,10 @@ a	O
 day	O
 websites	O
 like	O
-groupon	O
+Groupon	O
 .	O
 
-i	O
+I	O
 just	O
 want	O
 a	O
@@ -5991,16 +5991,16 @@ good	O
 deal	O
 to	O
 whatever	O
-restaurant	O
-i	O
+Restaurant	O
+I	O
 want	O
 ,	O
 whenever	O
-i	O
+I	O
 want	O
 .	O
 
-any	O
+Any	B-PER
 suggestions	O
 would	O
 be	O
@@ -6010,22 +6010,22 @@ helpful	O
 thanks	O
 !	O
 
-i	O
+I	O
 usually	O
 use	O
-zebraklub	O
+ZebraKlub	O
 .	O
 
-they	O
+They	O
 basically	O
 buy	O
 daily	O
 deals	O
 from	O
-groupon	O
+Groupon	O
 ,	O
-living	O
-social	O
+Living	O
+Social	O
 ,	O
 and	O
 all	O
@@ -6035,7 +6035,7 @@ other	O
 places	O
 .	O
 
-so	O
+So	O
 you	O
 can	O
 pretty	O
@@ -6048,7 +6048,7 @@ want	O
 anytime	O
 .	O
 
-most	O
+Most	O
 of	O
 the	O
 deals	O
@@ -6069,7 +6069,7 @@ even	O
 free	O
 .	O
 
-if	O
+If	O
 you	O
 want	O
 to	O
@@ -6080,13 +6080,13 @@ worrying	O
 about	O
 all	O
 those	O
-daily	O
-deal	O
+daily	B-ORG
+deal	I-ORG
 emails	O
 every	O
 day	O
 ,	O
-zebraklub	O
+ZebraKlub	O
 should	O
 be	O
 perfect	O
@@ -6094,9 +6094,9 @@ for	O
 you	O
 .	O
 
-where	O
+Where	O
 can	O
-i	O
+I	O
 go	O
 on	O
 a	O
@@ -6107,7 +6107,7 @@ adults	O
 )	O
 ?	O
 
-looking	O
+Looking	O
 for	O
 something	O
 on	O
@@ -6123,7 +6123,7 @@ be	O
 fun	O
 .	O
 
-may	O
+May	O
 seem	O
 a	O
 little	O
@@ -6137,12 +6137,12 @@ long	O
 ride	O
 on	O
 the	O
-metra	O
+Metra	O
 system	O
 or	O
 the	O
 "	O
-l	O
+L	O
 "	O
 system	O
 is	O
@@ -6161,14 +6161,14 @@ a	O
 fortune	O
 .	O
 
-or	O
+Or	O
 how	O
 about	O
 visiting	O
 the	O
-chicago	O
-botanical	O
-gardens	O
+Chicago	O
+Botanical	O
+Gardens	O
 and	O
 see	O
 the	O
@@ -6176,11 +6176,11 @@ change	O
 of	O
 colors	O
 and	O
-enjoy	O
+enjoy	B-ORG
 the	O
 air	O
 ,	O
-they	O
+They	O
 also	O
 have	O
 many	O
@@ -6188,7 +6188,7 @@ inside	O
 exhibits	O
 you	O
 might	O
-enjoy	O
+enjoy	B-ORG
 ,	O
 food	O
 is	O
@@ -6206,11 +6206,11 @@ spend	O
 more	O
 than	O
 20	O
-bucks	O
+bucks	B-ORG
 :	O
 )	O
 
-bike	O
+Bike	O
 ride	O
 in	O
 the	O
@@ -6221,7 +6221,7 @@ by	O
 coffee	O
 .	O
 
-you	O
+You	O
 are	O
 busy	O
 ,	O
@@ -6278,7 +6278,7 @@ ta	O
 go	O
 .	O
 
-i	O
+I	O
 decided	O
 to	O
 get	O
@@ -6289,19 +6289,19 @@ aquarium	O
 ,	O
 what	O
 can	O
-i	O
+I	O
 fill	O
 it	O
 with	O
 ?	O
 
-i	O
+I	O
 was	O
 thinking	O
 cichlids	O
 ?	O
 
-possibly	O
+Possibly	O
 a	O
 freshwater	O
 tank	O
@@ -6315,7 +6315,7 @@ in	O
 there	O
 .	O
 
-i	O
+I	O
 '	O
 ve	O
 never	O
@@ -6324,7 +6324,7 @@ cichlids	O
 though	O
 .	O
 
-i	O
+I	O
 know	O
 saltwater	O
 is	O
@@ -6337,14 +6337,14 @@ give	O
 me	O
 a	O
 possible	O
-stocking	O
+stocking	B-PER
 option	O
 for	O
 that	O
 too	O
 ?	O
 
-i	O
+I	O
 '	O
 ll	O
 choose	O
@@ -6363,7 +6363,7 @@ fish	O
 :	O
 )	O
 
-here	O
+Here	O
 is	O
 the	O
 stocking	O
@@ -6383,31 +6383,31 @@ weekend	O
 because	O
 of	O
 the	O
-clownloach	O
-a	O
+clownloach	B-ORG
+A	O
 200	O
 gallon	O
 with	O
 6	O
-pairs	O
+pairs	B-ORG
 of	O
-breeding	O
-angel	O
+Breeding	O
+Angel	O
 fish	O
 fire	O
 mouth	O
-honey	O
-gouramis	O
+honey	B-ORG
+Gouramis	I-ORG
 5	O
 8	O
-inch	O
-clownloach	O
+inch	B-ORG
+clownloach	I-ORG
 a	O
-krib	O
+Krib	O
 and	O
 5	O
 1	O
-inch	O
+inch	B-ORG
 clown	O
 loach	O
 with	O
@@ -6415,24 +6415,24 @@ with	O
 cory	O
 cats	O
 5	O
-australian	O
-rainbows	O
+Australian	O
+Rainbows	O
 
-if	O
+If	O
 you	O
 took	O
 out	O
 the	O
-clown	O
+clown	B-PER
 loach	O
 it	O
 would	O
 make	O
 a	O
-nice	O
-150	O
+nice	B-PER
+150	I-PER
 gallon	O
-tank	O
+tank	B-PER
 .	O
 
 fill	O
