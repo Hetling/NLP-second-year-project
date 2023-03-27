@@ -16,7 +16,6 @@ nlp = pipeline("ner", model=model, tokenizer=tokenizer, ignore_labels=[])
 
 example = ['My', 'name', 'is', 'Wolfgang', 'and', 'I', 'live', 'in', 'Iguazu', '.', 'My', 'name', 'is', 'Obama']
 
-#make example into Union data type
 example = ' '.join(example)
 
 
