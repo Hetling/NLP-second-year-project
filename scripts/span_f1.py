@@ -1,6 +1,8 @@
 import sys
 
 def readBIO(path):
+    #read in BIO format
+    #return list of lists of tags
     ents = []
     curEnts = []
     for line in open(path):
@@ -28,14 +30,15 @@ def toSpans(tags):
 def getInstanceScores(predPath, goldPath):
     goldEnts = readBIO(goldPath)
     predEnts = readBIO(predPath)
-    entScores = []
     tp = 0
     fp = 0
     fn = 0
     for goldEnt, predEnt in zip(goldEnts, predEnts):
         goldSpans = toSpans(goldEnt)
         predSpans = toSpans(predEnt)
+        print(goldSpans)
         overlap = len(goldSpans.intersection(predSpans))
+
         tp += overlap
         fp += len(predSpans) - overlap
         fn += len(goldSpans) - overlap
