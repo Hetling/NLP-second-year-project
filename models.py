@@ -37,7 +37,7 @@ for sentPos, sent in enumerate(train_data):
 # Vocab length
 vocab_dim = len(idx2word)
 
-# Convert training dataset to word indicies
+# Convert training dataset to word indices
 feats = torch.zeros((len(train_data), max_len), dtype=torch.long)
 for sentPos, sent in enumerate(train_data):
     for wordPos, word in enumerate(sent['tokens'][:max_len]):
@@ -46,6 +46,7 @@ for sentPos, sent in enumerate(train_data):
 
 # Generate labels as a tensor of booleans indicating if the masked token is a named entity
 labels = torch.tensor([sent['is_ner'] for sent in train_data], dtype=torch.float)
+
 
 # Generate named entity class labels:
 # Get all ner_tags from wnut_17 dataset
@@ -70,6 +71,16 @@ for sentPos, sent in enumerate(filtered_train_data):
         wordIdx = word2idx[PAD] if word not in word2idx else word2idx[word]
         named_entity_sentence_feats[sentPos][wordPos] = wordIdx
 
+
+# Generate an array of size (num_feats, num_entities + 1) where each row is a one hot encoded vector of the named entity class or non named entity class
+approach2_labels = torch.zeros((len(train_data), num_entities+1), dtype=torch.float)
+for sentPos, sent in enumerate(train_data):
+    # If the masked token is not a named entity, then the label is the non named entity class
+    if not sent['is_ner']:
+        approach2_labels[sentPos][0] = 1
+    else:
+        # NOTE: Maybe add 1 here? (probably not though)        
+        approach2_labels[sentPos][sent['ner_tag']] = 1
 
 ############### Begin approach 1 model ###############
 class Approach1MaskPrediction(nn.module);
@@ -187,7 +198,21 @@ class Approach2(nn.module);
         
         return output
     
+approach2model = Approach2(vocab_dim, emb_dim)
+criterion = nn.CrossEntropyLoss()
+optimizer = torch.optim.Adam(approach2model.parameters(), lr=lr)
 
+for epoch in range(num_epochs):
+    for i in range(0, len(feats), batch_size):        
+        batch_feats = feats[i:i+batch_size]
+        batch_labels = approach2_labels[i:i+batch_size]    
+        optimizer.zero_grad()
+        y_pred = approach2model(batch_feats)
+        loss = criterion(y_pred, batch_labels)
+        loss.backward()
+        optimizer.step()
+    print("Epoch: {}/{}...".format(epoch+1, num_epochs),
+        "Loss: {:.6f}...".format(loss.item()))
 
 
 # TODO: Prepare data for this approach and code training loop    
