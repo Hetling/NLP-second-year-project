@@ -46,6 +46,8 @@ for sentPos, sent in enumerate(train_data):
 
 # Generate labels as a tensor of booleans indicating if the masked token is a named entity
 labels = torch.tensor([sent['is_ner'] for sent in train_data], dtype=torch.float)
+# Add a dimension to labels
+labels = labels.unsqueeze(1)
 
 
 # Generate named entity class labels:
@@ -119,7 +121,7 @@ class Approach1EntityClassification(nn.module);
         self.linear = nn.Linear(emb_dim, 128)
         # Pool together all word embeddings after linear layer
         self.pool = nn.AdaptiveMaxPool1d(1)
-        self.output = nn.Linear(128, num_entities)
+        self.output = nn.Linear(128, num_entities - 1) # Subtract 1 since we don't include the non named entity class
 
     
     def forward(self, x):
@@ -242,14 +244,16 @@ class Approach3CombinedModel(nn.Module):
 
         # Model 2 specific layers        
         # Output a single value for whether the masked token is a named entity
-        self.model2_output = nn.Linear(128, num_entities)
+        self.model2_output = nn.Linear(128, num_entities - 1)
 
         
     def forward(self, x):
         x = self.word_embeddings(x)
-        x = self.linear(x)
-        x = nn.ReLU(x)
-        x = self.pool(x.transpose(1, 2)).squeeze(2)
+        x = self.linear(x)        
+        x = nn.functional.relu(x)
+        # Pool over the output of relu        
+        x = self.pool(x.transpose(1, 2)).squeeze(2)  
+
         # Run through model 1
         model1_output = self.model1_output(x)
         model1_output = torch.sigmoid(model1_output)
@@ -259,7 +263,7 @@ class Approach3CombinedModel(nn.Module):
         model2_output = torch.softmax(model2_output, dim=1)
         # Run through gate
         gate_output = self.gate(model1_output)        
-        gate_output = nn.ReLU(gate_output)
+        gate_output = nn.functional.relu(gate_output)
         model2_output = model2_output * gate_output
         # The gating mechanism should be able to learn to not run model 2 if model 1 predicts that the masked token is not a named entity 
 
@@ -278,9 +282,16 @@ for epoch in range(num_epochs):
         batch_labels_1 = labels[i:i+batch_size] # Labels if mask is a named entity or not
         batch_labels_2 = true_ner_tags[i:i+batch_size] # Labels for what type of named entity the mask is
         optimizer.zero_grad()
-        y_pred1, y_pred2 = combined_model(batch_feats)
+        y_pred1, y_pred2 = combined_model(batch_feats)        
         loss1 = criterion1(y_pred1, batch_labels_1)
-        loss2 = criterion2(y_pred2, batch_labels_2)           
+        print(y_pred2.shape, batch_labels_2.shape)
+        # NOTE: A problem below is that the shape between feats, labels, and true_ner_tags is not the same
+        # Shapes are: (torch.Size([62730, 32]), torch.Size([62730, 1]), torch.Size([3160, 12]))
+        # This is because true_ner_tags only contains the sequences where the masked token is a named entity and not a non named entity
+        # To combat this, we can either:
+        # 1. Pad the sequences where the masked token is not a named entity with a uniform distribution over all named entities
+        # 2. Change the model to output a probability distribution over all named entities plus 1 for non named entity                
+        loss2 = criterion2(y_pred2, batch_labels_2)
         loss = loss1 + loss2
         loss.backward()
         optimizer.step()
