@@ -84,6 +84,16 @@ for sentPos, sent in enumerate(train_data):
         # NOTE: Maybe add 1 here? (probably not though)        
         approach2_labels[sentPos][sent['ner_tag']] = 1
 
+# For approach 3 we need to pad true_ner_tags to the same length as labels. We just add an array of 0's when the label is a non named entity
+approach_3_task_2_labels = torch.zeros((len(train_data), num_entities-1), dtype=torch.float)
+for sentPos, sent in enumerate(train_data):
+    label = sent['ner_tag']
+    if label != 0:
+        approach_3_task_2_labels[sentPos][label-1] = 1
+
+
+
+
 ############### Begin approach 1 model ###############
 class Approach1MaskPrediction(nn.module);
     def __init__(self, vocab_dim, emb_dim):
@@ -92,9 +102,9 @@ class Approach1MaskPrediction(nn.module);
         This model serves the purpose of predicting whether a masked token is a named entity or not
         Then we train another model that predicts the actual named entity class
         '''
-        super(Approach1MaskPrediction, self).__init__()        
+        super(Approach1MaskPrediction, self).__init__()
         self.word_embeddings = nn.Embedding(vocab_dim, emb_dim)
-        self.linear = nn.Linear(emb_dim, 128)                
+        self.linear = nn.Linear(emb_dim, 128)
         # Pool together all word embeddings after linear layer
         self.pool = nn.AdaptiveMaxPool1d(1)
         self.output = nn.Linear(128, 1)
@@ -114,7 +124,7 @@ class Approach1EntityClassification(nn.module);
     def __init__(self, vocab_dim, emb_dim):
         '''
         Second model in approach 1
-        This model predicts the named entity class of a masked token        
+        This model predicts the named entity class of a masked token
         '''
         super(Approach1EntityClassification, self).__init__()
         self.word_embeddings = nn.Embedding(vocab_dim, emb_dim)
@@ -280,17 +290,10 @@ for epoch in range(num_epochs):
     for i in range(0, len(feats), batch_size):
         batch_feats = feats[i:i+batch_size]
         batch_labels_1 = labels[i:i+batch_size] # Labels if mask is a named entity or not
-        batch_labels_2 = true_ner_tags[i:i+batch_size] # Labels for what type of named entity the mask is
+        batch_labels_2 = approach_3_task_2_labels[i:i+batch_size] # Labels for what type of named entity the mask is
         optimizer.zero_grad()
         y_pred1, y_pred2 = combined_model(batch_feats)        
-        loss1 = criterion1(y_pred1, batch_labels_1)
-        print(y_pred2.shape, batch_labels_2.shape)
-        # NOTE: A problem below is that the shape between feats, labels, and true_ner_tags is not the same
-        # Shapes are: (torch.Size([62730, 32]), torch.Size([62730, 1]), torch.Size([3160, 12]))
-        # This is because true_ner_tags only contains the sequences where the masked token is a named entity and not a non named entity
-        # To combat this, we can either:
-        # 1. Pad the sequences where the masked token is not a named entity with a uniform distribution over all named entities
-        # 2. Change the model to output a probability distribution over all named entities plus 1 for non named entity                
+        loss1 = criterion1(y_pred1, batch_labels_1)        
         loss2 = criterion2(y_pred2, batch_labels_2)
         loss = loss1 + loss2
         loss.backward()
