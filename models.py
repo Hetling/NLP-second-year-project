@@ -95,7 +95,7 @@ for sentPos, sent in enumerate(train_data):
 
 
 ############### Begin approach 1 model ###############
-class Approach1MaskPrediction(nn.module);
+class Approach1MaskPrediction(nn.Module):
     def __init__(self, vocab_dim, emb_dim):
         '''
         First model in approach 1
@@ -113,14 +113,14 @@ class Approach1MaskPrediction(nn.module);
     def forward(self, x):
         x = self.word_embeddings(x)
         x = self.linear(x)
-        x = nn.ReLU(x)
+        x = nn.functional.relu(x)
         x = self.pool(x.transpose(1, 2)).squeeze(2)        
         output = self.output(x)
         output = torch.sigmoid(output)
 
         return output
 
-class Approach1EntityClassification(nn.module);
+class Approach1EntityClassification(nn.Module):
     def __init__(self, vocab_dim, emb_dim):
         '''
         Second model in approach 1
@@ -137,7 +137,7 @@ class Approach1EntityClassification(nn.module);
     def forward(self, x):
         x = self.word_embeddings(x)
         x = self.linear(x)
-        x = nn.ReLU(x)
+        x = nn.functional.relu(x)
         x = self.pool(x.transpose(1, 2)).squeeze(2)        
         output = self.output(x)
         output = torch.softmax(output, dim=1)
@@ -160,7 +160,24 @@ for epoch in range(num_epochs):
         optimizer.step()    
     print("Epoch: {}/{}...".format(epoch+1, num_epochs),
             "Loss: {:.6f}...".format(loss.item()))
+    
+approach1_entity_classification = Approach1EntityClassification(vocab_dim, emb_dim)
+criterion = nn.CrossEntropyLoss()
+optimizer = torch.optim.Adam(approach1_entity_classification.parameters(), lr=lr)
 
+for epoch in range(num_epochs):
+    for i in range(0, len(named_entity_sentence_feats), batch_size):
+        batch_feats = named_entity_sentence_feats[i:i+batch_size]
+        batch_labels = true_ner_tags[i:i+batch_size]
+        optimizer.zero_grad()
+        y_pred = approach1_entity_classification(batch_feats)
+        loss = criterion(y_pred, batch_labels)
+        loss.backward()
+        optimizer.step()
+
+    print("Epoch: {}/{}...".format(epoch+1, num_epochs),
+        "Loss: {:.6f}...".format(loss.item()))
+    
 
 # TODO: Evaluate performance
 
@@ -185,7 +202,7 @@ for epoch in range(num_epochs):
 ############### End approach 1 model ###############
 
 ############### Begin approach 2 model ###############
-class Approach2(nn.module);
+class Approach2(nn.Module):
     def __init__(self, vocab_dim, emb_dim):
         '''
         The only model in approach 2
@@ -203,7 +220,7 @@ class Approach2(nn.module);
     def forward(self, x):
         x = self.word_embeddings(x)
         x = self.linear(x)
-        x = nn.ReLU(x)
+        x = nn.functional.relu(x)
         x = self.pool(x.transpose(1, 2)).squeeze(2)
         output = self.output(x)
         output = torch.softmax(output, dim=1)
