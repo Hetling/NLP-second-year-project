@@ -1,101 +1,40 @@
-import pandas as pd
-import numpy as np
 import torch
 import torch.nn as nn
 from datasets import load_dataset
 
-from scripts.maskPrecessTest import generate_masked_sentences
+from scripts.preprocess import generate_masked_sentences, generate_word2idx, preprocess_data
 
 
 wnut = load_dataset("wnut_17")
 
 #preprocess data
 train_data = generate_masked_sentences(wnut['train'])
-
+test_data = generate_masked_sentences(wnut['test'])
 
 # Define hyperparameters to share between all three approaches
 # Ideally as much as possible should be shared so we can compare the approaches with more or less the same architecture
+PAD = '<PAD>'
 batch_size = 32
 num_epochs = 10
 lr = 0.001
 max_len=32 # Length of sentence
 emb_dim = 128 # The embedding dimension of each token 
 
-
-# Create word to index mappings
-PAD = '<PAD>'
-word2idx = {PAD:0}
-idx2word = [PAD]
-
-# Generate word2idxs
-for sentPos, sent in enumerate(train_data):
-    for wordPos, word in enumerate(sent['tokens'][:max_len]):
-        if word not in word2idx:
-            word2idx[word] = len(idx2word)
-            idx2word.append(word)
-
+word2idx, idx2word = generate_word2idx(train_data, max_len, PAD)
 # Vocab length
 vocab_dim = len(idx2word)
 
-# Convert training dataset to word indices
-feats = torch.zeros((len(train_data), max_len), dtype=torch.long)
-for sentPos, sent in enumerate(train_data):
-    for wordPos, word in enumerate(sent['tokens'][:max_len]):
-        wordIdx = word2idx[PAD] if word not in word2idx else word2idx[word]
-        feats[sentPos][wordPos] = wordIdx
-
-# Generate labels as a tensor of booleans indicating if the masked token is a named entity
-labels = torch.tensor([sent['is_ner'] for sent in train_data], dtype=torch.float)
-# Add a dimension to labels
-labels = labels.unsqueeze(1)
-
-
-# Generate named entity class labels:
 # Get all ner_tags from wnut_17 dataset
 ner_tags = wnut['train'].features['ner_tags'].feature.names
-# Create a dictionary mapping ner_tags to indices
-idx2ner = {i:ner for i, ner in enumerate(ner_tags)}
-num_entities = len(idx2ner)
-print("Number of entities", num_entities)
+num_entities = len(ner_tags) # Number of entities including non entity
+print("Number of entities", num_entities)  
 
-# Filter out all the sentences in train_data where the masked token is not a named entity, i.e. the is_ner field is False
-filtered_train_data = [sent for sent in train_data if sent['is_ner']]
-# Create a list of one hot encoded vectors for each sentence in filtered_train_data
-true_ner_tags = torch.zeros((len(filtered_train_data), num_entities-1), dtype=torch.float)
-for sentPos, sent in enumerate(filtered_train_data):
-    # We minus 1 to the ner_tag since the ner_tag is 1 indexed (as the first index is reserved for the class of non named entities)
-    true_ner_tags[sentPos][sent['ner_tag']-1] = 1
-print("Shape of true_ner_tags", true_ner_tags.shape)
-
-named_entity_sentence_feats = torch.zeros((len(filtered_train_data), max_len), dtype=torch.long)
-for sentPos, sent in enumerate(filtered_train_data):
-    for wordPos, word in enumerate(sent['tokens'][:max_len]):
-        wordIdx = word2idx[PAD] if word not in word2idx else word2idx[word]
-        named_entity_sentence_feats[sentPos][wordPos] = wordIdx
-
-
-# Generate an array of size (num_feats, num_entities + 1) where each row is a one hot encoded vector of the named entity class or non named entity class
-approach2_labels = torch.zeros((len(train_data), num_entities+1), dtype=torch.float)
-for sentPos, sent in enumerate(train_data):
-    # If the masked token is not a named entity, then the label is the non named entity class
-    if not sent['is_ner']:
-        approach2_labels[sentPos][0] = 1
-    else:
-        # NOTE: Maybe add 1 here? (probably not though)        
-        approach2_labels[sentPos][sent['ner_tag']] = 1
-
-# For approach 3 we need to pad true_ner_tags to the same length as labels. We just add an array of 0's when the label is a non named entity
-approach_3_task_2_labels = torch.zeros((len(train_data), num_entities-1), dtype=torch.float)
-for sentPos, sent in enumerate(train_data):
-    label = sent['ner_tag']
-    if label != 0:
-        approach_3_task_2_labels[sentPos][label-1] = 1
-
-
+train_sentence_feats, train_mask_labels, train_named_entity_sentence_feats, train_named_entity_data_labels, train_approach2_labels, train_approach_3_task_2_labels = preprocess_data(train_data)
+test_sentence_feats, test_mask_labels, test_named_entity_sentence_feats, test_named_entity_data_labels, test_approach2_labels, test_approach_3_task_2_labels = preprocess_data(test_data)
 
 
 ############### Begin approach 1 model ###############
-class Approach1MaskPrediction(nn.Module):
+class Approach1MaskPrediction(nn.Module):    
     def __init__(self, vocab_dim, emb_dim):
         '''
         First model in approach 1
@@ -150,9 +89,9 @@ criterion = nn.BCELoss()
 optimizer = torch.optim.Adam(approach1_mask_prediction.parameters(), lr=lr)
 
 for epoch in range(num_epochs):
-    for i in range(0, len(feats), batch_size):        
-        batch_feats = feats[i:i+batch_size]
-        batch_labels = labels[i:i+batch_size]
+    for i in range(0, len(train_sentence_feats), batch_size):        
+        batch_feats = train_sentence_feats[i:i+batch_size]
+        batch_labels = train_mask_labels[i:i+batch_size]
         optimizer.zero_grad()
         y_pred = approach1_mask_prediction(batch_feats)
         loss = criterion(y_pred, batch_labels)
@@ -166,9 +105,9 @@ criterion = nn.CrossEntropyLoss()
 optimizer = torch.optim.Adam(approach1_entity_classification.parameters(), lr=lr)
 
 for epoch in range(num_epochs):
-    for i in range(0, len(named_entity_sentence_feats), batch_size):
-        batch_feats = named_entity_sentence_feats[i:i+batch_size]
-        batch_labels = true_ner_tags[i:i+batch_size]
+    for i in range(0, len(train_named_entity_sentence_feats), batch_size):
+        batch_feats = train_named_entity_sentence_feats[i:i+batch_size]
+        batch_labels = train_named_entity_data_labels[i:i+batch_size]
         optimizer.zero_grad()
         y_pred = approach1_entity_classification(batch_feats)
         loss = criterion(y_pred, batch_labels)
@@ -180,23 +119,6 @@ for epoch in range(num_epochs):
     
 
 # TODO: Evaluate performance
-
-
-approach1_entity_classification = Approach1EntityClassification(vocab_dim, emb_dim)
-criterion = nn.CrossEntropyLoss()
-optimizer = torch.optim.Adam(approach1_entity_classification.parameters(), lr=lr)
-
-for epoch in range(num_epochs):
-    for i in range(0, len(named_entity_sentence_feats), batch_size):        
-        batch_feats = named_entity_sentence_feats[i:i+batch_size]
-        batch_labels = true_ner_tags[i:i+batch_size]
-        optimizer.zero_grad()
-        y_pred = approach1_entity_classification(batch_feats)
-        loss = criterion(y_pred, batch_labels)
-        loss.backward()
-        optimizer.step()
-    print("Epoch: {}/{}...".format(epoch+1, num_epochs),
-        "Loss: {:.6f}...".format(loss.item()))
 
 
 ############### End approach 1 model ###############
@@ -214,7 +136,7 @@ class Approach2(nn.Module):
         self.linear = nn.Linear(emb_dim, 128)
         # Pool together all word embeddings after linear layer
         self.pool = nn.AdaptiveMaxPool1d(1)
-        self.output = nn.Linear(128, num_entities + 1)
+        self.output = nn.Linear(128, num_entities)
 
     
     def forward(self, x):
@@ -232,9 +154,9 @@ criterion = nn.CrossEntropyLoss()
 optimizer = torch.optim.Adam(approach2model.parameters(), lr=lr)
 
 for epoch in range(num_epochs):
-    for i in range(0, len(feats), batch_size):        
-        batch_feats = feats[i:i+batch_size]
-        batch_labels = approach2_labels[i:i+batch_size]    
+    for i in range(0, len(train_sentence_feats), batch_size):        
+        batch_feats = train_sentence_feats[i:i+batch_size]
+        batch_labels = train_approach2_labels[i:i+batch_size]    
         optimizer.zero_grad()
         y_pred = approach2model(batch_feats)
         loss = criterion(y_pred, batch_labels)
@@ -304,10 +226,10 @@ criterion2 = nn.CrossEntropyLoss()
 optimizer = torch.optim.Adam(combined_model.parameters(), lr=lr)
 
 for epoch in range(num_epochs):
-    for i in range(0, len(feats), batch_size):
-        batch_feats = feats[i:i+batch_size]
-        batch_labels_1 = labels[i:i+batch_size] # Labels if mask is a named entity or not
-        batch_labels_2 = approach_3_task_2_labels[i:i+batch_size] # Labels for what type of named entity the mask is
+    for i in range(0, len(train_sentence_feats), batch_size):
+        batch_feats = train_sentence_feats[i:i+batch_size]
+        batch_labels_1 = train_mask_labels[i:i+batch_size] # Labels if mask is a named entity or not
+        batch_labels_2 = train_approach_3_task_2_labels[i:i+batch_size] # Labels for what type of named entity the mask is
         optimizer.zero_grad()
         y_pred1, y_pred2 = combined_model(batch_feats)        
         loss1 = criterion1(y_pred1, batch_labels_1)        
