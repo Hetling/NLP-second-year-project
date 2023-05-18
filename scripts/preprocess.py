@@ -6,11 +6,6 @@ import torch
 import pandas as pd
 from datasets import load_dataset
 
-#preprocess dataz
-
-# wnut = load_dataset("wnut_17")
-
-
 #preprocess data
 def generate_masked_sentences(data):
     #creates new dataset where each token in a sentence is masked and used as a new sentence
@@ -45,7 +40,7 @@ def generate_word2idx(data, max_len, PAD='<PAD>'):
     return word2idx, idx2word
 
 
-def convert_to_word_indices(data, word2idx, max_len):
+def convert_to_word_indices(data, word2idx, max_len, PAD='<PAD>'):
     # Convert dataset to word indices
     feats = torch.zeros((len(data), max_len), dtype=torch.long)
     for sentPos, sent in enumerate(data):
@@ -56,8 +51,8 @@ def convert_to_word_indices(data, word2idx, max_len):
     return feats
 
 
-def preprocess_data(dataset, word2idx, max_len, num_entities):
-    sentence_feats = convert_to_word_indices(dataset, word2idx, max_len)
+def preprocess_data(dataset, word2idx, max_len, num_entities, PAD='<PAD>'):
+    sentence_feats = convert_to_word_indices(dataset, word2idx, max_len, PAD)
 
     # Generate labels as a tensor of booleans indicating if the masked token is a named entity
     mask_labels = torch.tensor([sent['is_ner'] for sent in dataset], dtype=torch.float)
@@ -69,6 +64,8 @@ def preprocess_data(dataset, word2idx, max_len, num_entities):
     
 
     named_entity_data_labels = torch.eye(num_entities-1)[[sent['ner_tag']-1 for sent in named_entity_data]]
+    approach1_model_2_test_data = torch.eye(num_entities-1)[[sent['ner_tag']-1 for sent in dataset]] # named_entity_data_labels_full_length
+
 
     named_entity_sentence_feats = convert_to_word_indices(named_entity_data, word2idx, max_len)
 
@@ -86,4 +83,4 @@ def preprocess_data(dataset, word2idx, max_len, num_entities):
             approach_3_task_2_labels[sentPos][label-1] = 1
 
 
-    return sentence_feats, mask_labels, named_entity_sentence_feats, named_entity_data_labels, approach2_labels, approach_3_task_2_labels
+    return sentence_feats, mask_labels, named_entity_sentence_feats, named_entity_data_labels, approach1_model_2_test_data, approach2_labels, approach_3_task_2_labels
