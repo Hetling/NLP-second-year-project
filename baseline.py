@@ -30,17 +30,16 @@ def tokenize_and_align_labels(examples):
     return tokenized_inputs
 
 tokenized_wnut = wnut.map(tokenize_and_align_labels, batched=True)
-data_collator = DataCollatorForTokenClassification(tokenizer=tokenizer)
+data_collator = DataCollatorForTokenClassification(tokenizer=tokenizer) #adds padding after tokenizing
 model = AutoModelForTokenClassification.from_pretrained("distilbert-base-uncased", num_labels=14)
 
-metric1 = load_metric("accuracy")
-metric2 = load_metric("f1")
+accuracy = load_metric("accuracy")
+metric = load_metric("f1")
 
 def compute_metrics(eval_pred):
     logits, labels = eval_pred
     predictions = np.argmax(logits, axis=-1)
-    accuracy = metric1.compute(predictions=predictions, references=labels)
-    f1 = metric2.compute(predictions=predictions, references=labels)
+    f1 = metric.compute(predictions=predictions, references=labels)
     return f1
     
 training_args = TrainingArguments(
@@ -64,3 +63,18 @@ trainer = Trainer(
 )
 
 trainer.train()
+
+df = trainer.predict(tokenized_wnut["test"])
+
+
+logits = df.predictions
+predictions = np.argmax(logits, axis=-1)
+labels = df.label_ids
+score = metric.compute(predictions=predictions, references=labels)
+
+#flatten predictions and labels
+flat_predictions = np.ravel(predictions)
+flat_labels = np.ravel(labels)
+
+score = metric.compute(predictions=flat_predictions, references=flat_labels, average='macro')
+accuracy_score = accuracy.compute(predictions=flat_predictions, references=flat_labels)
