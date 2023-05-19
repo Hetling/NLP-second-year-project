@@ -65,6 +65,7 @@ def main():
     word2idx, idx2word = generate_word2idx(train_data, max_len, PAD)
     # Vocab length
     vocab_dim = len(idx2word)
+    print("Vocab length", vocab_dim)
 
     # Get all ner_tags from wnut_17 dataset
     ner_tags = wnut['train'].features['ner_tags'].feature.names
@@ -218,6 +219,7 @@ def evaluate(models_to_evaluate, test_data: list, state: dict):
             y_pred = (y_pred > threshold).float() # Convert probabilities to binary predictions
             y_test = test_mask_labels
             print("Accuracy of mask prediction model", accuracy_score(y_test, y_pred))
+            print("F1 score of mask prediction model", f1_score(y_test, y_pred, average='macro'))
 
         print("Approach 1: Evaluating entity classification model")
         # Only run Approach1EntityClassification if y_pred is 1
@@ -233,7 +235,7 @@ def evaluate(models_to_evaluate, test_data: list, state: dict):
             y_pred = approach1_entity_classification(test_sentence_feats[indices])
             y_pred = torch.argmax(y_pred, axis=1)
             y_test = torch.argmax(approach1_model_2_test_data[indices], axis=1)
-            # print("Accuracy of entity classification model", accuracy_score(y_test, y_pred))
+            print("Accuracy of entity classification model", accuracy_score(y_test, y_pred))
             print("F1 score of entity classification model", f1_score(y_test, y_pred, average='macro'))
 
 
@@ -269,7 +271,7 @@ def evaluate(models_to_evaluate, test_data: list, state: dict):
             y_test2 = torch.argmax(test_approach_3_task_2_labels, axis=1)
             print("Accuracy of approach 3 model 1", accuracy_score(y_test1, y_pred1))
             print("F1 score of approach 3 model 1", f1_score(y_test1, y_pred1, average='macro'))
-            # print("Accuracy of approach 3 model 2", accuracy_score(y_test2, y_pred2))
+            print("Accuracy of approach 3 model 2", accuracy_score(y_test2, y_pred2))
             print("F1 score of approach 3 model 2", f1_score(y_test2, y_pred2, average='macro'))
 
 if __name__ == '__main__':
