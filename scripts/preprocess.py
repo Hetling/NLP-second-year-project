@@ -72,6 +72,8 @@ def convert_to_word_indices(data, word2idx, max_len, PAD='<PAD>'):
 
 def preprocess_data(dataset, word2idx, max_len, num_entities, PAD='<PAD>'):
     sentence_feats = [embedding['word_embedding'] for embedding in dataset]
+    # Convert list sentence_feats to pytorch tensor
+    sentence_feats = torch.stack(sentence_feats)
     # sentence_feats = convert_to_word_indices(dataset, word2idx, max_len, PAD)
 
     # Generate labels as a tensor of booleans indicating if the masked token is a named entity
@@ -87,6 +89,8 @@ def preprocess_data(dataset, word2idx, max_len, num_entities, PAD='<PAD>'):
     approach1_model_2_test_data = torch.eye(num_entities-1)[[sent['ner_tag']-1 for sent in dataset]] # named_entity_data_labels_full_length
 
     named_entity_sentence_feats = [embedding['word_embedding'] for embedding in named_entity_data]
+    # Convert list named_entity_sentence_feats to pytorch tensor
+    named_entity_sentence_feats = torch.stack(named_entity_sentence_feats)
     # named_entity_sentence_feats = convert_to_word_indices(named_entity_data, word2idx, max_len)
 
     # Generate an array of size (num_feats, num_entities + 1) where each row is a one hot encoded vector of the named entity class or non named entity class

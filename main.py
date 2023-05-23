@@ -55,7 +55,6 @@ def main():
     if not os.path.exists('models'):
         # Create the models directory
         os.makedirs('models')
-
     
     wnut = load_dataset("wnut_17")
 
@@ -90,6 +89,27 @@ def main():
             test_data = pickle.load(f)
 
 
+    # # Check if the data exists
+    # if not train_data_exists or not test_data_exists:
+    #     # If the train data does not exist, generate it
+    #     if not train_data_exists:
+    #         train_data = generate_masked_sentences(wnut['train'])
+    #         # Save the processed data
+    #         with open('models/data/train_data.pkl', 'wb') as f:
+    #             pickle.dump(train_data, f)
+    #     # If the test data does not exist, generate it
+    #     if not test_data_exists:
+    #         test_data = generate_masked_sentences(wnut['test'])
+    #         # Save the processed data
+    #         with open('models/data/test_data.pkl', 'wb') as f:
+    #             pickle.dump(test_data, f)
+    # # If the data already exists, load it
+    # else:
+    #     # Load data
+    #     with open('models/data/train_data.pkl', 'rb') as f:
+    #         train_data = pickle.load(f)
+    #     with open('models/data/test_data.pkl', 'rb') as f:
+    #         test_data = pickle.load(f)
 
     # Load datasets
     word2idx, idx2word = generate_word2idx(train_data, max_len, PAD)
