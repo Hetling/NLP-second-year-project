@@ -6,6 +6,7 @@ import numpy as np
 from datasets import load_metric
 
 wnut = load_dataset('wnut_17')
+label_list=wnut["train"].features[f"ner_tags"].feature.names
 tokenizer = AutoTokenizer.from_pretrained("distilbert-base-uncased")
 
 def tokenize_and_align_labels(examples):
@@ -31,17 +32,51 @@ def tokenize_and_align_labels(examples):
 
 tokenized_wnut = wnut.map(tokenize_and_align_labels, batched=True)
 data_collator = DataCollatorForTokenClassification(tokenizer=tokenizer) #adds padding after tokenizing
-model = AutoModelForTokenClassification.from_pretrained("distilbert-base-uncased", num_labels=14)
+model = AutoModelForTokenClassification.from_pretrained("distilbert-base-uncased", num_labels=14) #-100 is an extra label
 
-accuracy = load_metric("accuracy")
-metric = load_metric("f1")
+# accuracy = load_metric("accuracy")
+# metric = load_metric("f1")
+metric = load_metric("seqeval")
 
-def compute_metrics(eval_pred):
-    logits, labels = eval_pred
+def compute_metrics(df):
+    logits, labels = df
     predictions = np.argmax(logits, axis=-1)
-    f1 = metric.compute(predictions=predictions, references=labels)
-    return f1
-    
+
+    # #flatten predictions and labels
+    # flat_predictions = np.ravel(predictions)
+    # flat_labels = np.ravel(labels)
+    # #save flat predictions and flat labels to csv
+    # np.savetxt("flat_predictions.csv", flat_predictions, delimiter=",")
+    # np.savetxt("flat_labels.csv", flat_labels, delimiter=",")
+
+    # #only choose indexes that are not -100
+    # filtered_predictions = flat_predictions[flat_labels != -100]
+    # filtered_labels = flat_labels[flat_labels != -100]
+    # #save filtered predictions and filtered labels to csv
+    # np.savetxt("filtered_predictions.csv", filtered_predictions, delimiter=",")
+    # np.savetxt("filtered_labels.csv", filtered_labels, delimiter=",")
+
+    # f1 = metric.compute(predictions=filtered_predictions, references=filtered_labels, average='macro')
+    # accuracy_score = accuracy.compute(predictions=filtered_predictions, references=filtered_labels)
+
+    # Remove ignored index (special tokens)
+    true_predictions = [
+        [label_list[p] for (p, l) in zip(prediction, label) if l != -100]
+        for prediction, label in zip(predictions, labels)
+    ]
+    true_labels = [
+        [label_list[l] for (p, l) in zip(prediction, label) if l != -100]
+        for prediction, label in zip(predictions, labels)
+    ]
+
+    results = metric.compute(predictions=true_predictions, references=true_labels, zero_division=1) #default classes predicted 0 times to 1
+
+    return {"precision": results["overall_precision"],
+            "recall": results["overall_recall"],
+            "f1": results["overall_f1"],
+            "accuracy": results["overall_accuracy"],}
+
+
 training_args = TrainingArguments(
     output_dir="./results",
     evaluation_strategy="epoch",
@@ -63,18 +98,5 @@ trainer = Trainer(
 )
 
 trainer.train()
+trainer.evaluate()
 
-df = trainer.predict(tokenized_wnut["test"])
-
-
-logits = df.predictions
-predictions = np.argmax(logits, axis=-1)
-labels = df.label_ids
-score = metric.compute(predictions=predictions, references=labels)
-
-#flatten predictions and labels
-flat_predictions = np.ravel(predictions)
-flat_labels = np.ravel(labels)
-
-score = metric.compute(predictions=flat_predictions, references=flat_labels, average='macro')
-accuracy_score = accuracy.compute(predictions=flat_predictions, references=flat_labels)
