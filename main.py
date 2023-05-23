@@ -45,7 +45,7 @@ def main():
     # Ideally as much as possible should be shared so we can compare the approaches with more or less the same architecture
     PAD = '<PAD>'
     batch_size = 32
-    num_epochs = 3
+    num_epochs = 10
     lr = 0.001
     max_len = 32 # Length of sentence
     emb_dim = 128 # The embedding dimension of each token 
