@@ -1,27 +1,46 @@
-#test the bert ner model from huggingface
-from transformers import AutoTokenizer, AutoModelForTokenClassification
-from transformers import pipeline
 import torch
+from transformers import BertTokenizer, BertModel, DistilBertTokenizer, DistilBertModel
+from datasets import load_dataset
+from tqdm import tqdm
 # from helpers import load_conll
 import pandas as pd
-from datasets import load_dataset
+
+
+BERT_MODEL = 'distilbert-base-uncased'
+# Load pre-trained model tokenizer (vocabulary)
+# tokenizer = BertTokenizer.from_pretrained(BERT_MODEL)
+tokenizer = DistilBertTokenizer.from_pretrained(BERT_MODEL)
+
+# Load pre-trained model (weights)
+model = DistilBertModel.from_pretrained(BERT_MODEL,
+                                  output_hidden_states = True, # Whether the model returns all hidden-states.
+                                  )
+
+# Put the model in "evaluation" mode, meaning feed-forward operation.
+model.eval()
 
 #preprocess data
 def generate_masked_sentences(data):
     #creates new dataset where each token in a sentence is masked and used as a new sentence
     #the ner tag of the masked token is used as the label
 
+    pbar = tqdm(total=len(data))
     new_data = []
     id_ = 0
     for sentence in data:
         for i in range(len(sentence['tokens'])):
             new_sentence = sentence['tokens'].copy()
             new_sentence[i] = '[MASK]'
+            # Embed the input sentence
+            word_embedding = get_word_embedding(new_sentence)
             new_data.append({'id': id_,
                              'tokens': new_sentence,
                              'is_ner': bool(sentence['ner_tags'][i]),
-                             'ner_tag': sentence['ner_tags'][i],})
+                             'ner_tag': sentence['ner_tags'][i],
+                             'word_embedding': word_embedding})
             id_ += 1
+        pbar.update(1)
+    pbar.close()
 
     return new_data
 
@@ -52,7 +71,8 @@ def convert_to_word_indices(data, word2idx, max_len, PAD='<PAD>'):
 
 
 def preprocess_data(dataset, word2idx, max_len, num_entities, PAD='<PAD>'):
-    sentence_feats = convert_to_word_indices(dataset, word2idx, max_len, PAD)
+    sentence_feats = [embedding['word_embedding'] for embedding in dataset]
+    # sentence_feats = convert_to_word_indices(dataset, word2idx, max_len, PAD)
 
     # Generate labels as a tensor of booleans indicating if the masked token is a named entity
     mask_labels = torch.tensor([sent['is_ner'] for sent in dataset], dtype=torch.float)
@@ -66,8 +86,8 @@ def preprocess_data(dataset, word2idx, max_len, num_entities, PAD='<PAD>'):
     named_entity_data_labels = torch.eye(num_entities-1)[[sent['ner_tag']-1 for sent in named_entity_data]]
     approach1_model_2_test_data = torch.eye(num_entities-1)[[sent['ner_tag']-1 for sent in dataset]] # named_entity_data_labels_full_length
 
-
-    named_entity_sentence_feats = convert_to_word_indices(named_entity_data, word2idx, max_len)
+    named_entity_sentence_feats = [embedding['word_embedding'] for embedding in named_entity_data]
+    # named_entity_sentence_feats = convert_to_word_indices(named_entity_data, word2idx, max_len)
 
     # Generate an array of size (num_feats, num_entities + 1) where each row is a one hot encoded vector of the named entity class or non named entity class
     approach2_labels = torch.zeros((len(dataset), num_entities), dtype=torch.float)
@@ -84,3 +104,79 @@ def preprocess_data(dataset, word2idx, max_len, num_entities, PAD='<PAD>'):
 
 
     return sentence_feats, mask_labels, named_entity_sentence_feats, named_entity_data_labels, approach1_model_2_test_data, approach2_labels, approach_3_task_2_labels
+
+
+
+def get_word_embedding(text, sentence_length=32):
+    # Pad or truncate the text to the specified sentence length
+    encoding = tokenizer.encode_plus(
+        text,
+        add_special_tokens=True,
+        max_length=sentence_length,
+        padding="max_length",
+        truncation=True,
+        return_tensors="pt"
+    )
+
+    # Extract the input tensors
+    input_ids = encoding["input_ids"]
+    # segments_tensors = encoding["token_type_ids"]
+    attention_mask = encoding["attention_mask"]
+
+    # Run the text through BERT and collect all of the hidden states produced
+    # from all 12 layers
+    with torch.no_grad():
+        outputs = model(input_ids, attention_mask=attention_mask)
+        # hidden_states = outputs[2]
+        hidden_states = outputs[1]
+
+    # Concatenate the tensors for all layers. We use `stack` here to
+    # create a new dimension in the tensor.
+    token_embeddings = torch.stack(hidden_states, dim=0)
+
+    # Remove dimension 1, the "batches".
+    token_embeddings = torch.squeeze(token_embeddings, dim=1)
+
+    # Swap dimensions 0 and 1.
+    token_embeddings = token_embeddings.permute(1, 0, 2)
+
+    # Stores the token vectors, with shape [sentence_length x 768]
+    token_vecs_sum = torch.zeros([token_embeddings.size()[0], 768])
+
+    # `token_embeddings` is a [sentence_length x 12 x 768] tensor.
+
+    # For each token in the sentence...
+    for index, token in enumerate(token_embeddings):
+
+        # `token` is a [12 x 768] tensor
+
+        # Sum the vectors from the last four layers.
+        sum_vec = torch.sum(token[-4:], dim=0)
+
+        # Use `sum_vec` to represent `token`.
+        token_vecs_sum[index] = sum_vec
+
+    # Remove the first and the last token
+    # token_vecs_sum = token_vecs_sum[1:-1]
+
+    return token_vecs_sum
+
+# def embed_sentences(dataset, sentence_length):
+#     print("Embedding sentences...")
+#     embedded_sentences = torch.zeros((len(dataset), 32, 768))
+#     pbar = tqdm(total=len(dataset))
+
+#     # Iterate over the sentences
+#     for index, sent in enumerate(dataset):
+#         tokens = sent["tokens"]
+#         sentence = " ".join(tokens)
+#         word_vector = get_word_embedding(sentence, sentence_length=sentence_length)
+#         # Add to tensor
+#         embedded_sentences[index] = word_vector
+#         # embedded_sentences.append(word_vector)
+        
+#         pbar.update(1)
+
+#     pbar.close()
+
+#     return embedded_sentences

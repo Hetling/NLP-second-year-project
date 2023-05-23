@@ -5,8 +5,10 @@ import torch.nn as nn
 from datasets import load_dataset
 from sklearn.metrics import accuracy_score
 from sklearn.metrics import f1_score
+import pickle
 
 from scripts.preprocess import generate_masked_sentences, generate_word2idx, preprocess_data
+
 from models import Approach1MaskPrediction, Approach1EntityClassification, Approach2, Approach3CombinedModel
 
 def main():
@@ -58,9 +60,37 @@ def main():
     wnut = load_dataset("wnut_17")
 
     # Preprocess data
-    train_data = generate_masked_sentences(wnut['train'])
-    test_data = generate_masked_sentences(wnut['test'])
-    
+    # Check if models/data/train_data.pkl and models/data/test_data.pkl exists
+
+    if not os.path.exists('models/data'):    
+        os.makedirs('models/data')
+
+    train_data_exists = os.path.exists('models/data/train_data.pkl')
+    test_data_exists = os.path.exists('models/data/test_data.pkl')
+    # If the train data does not exist, generate it
+    if not train_data_exists:
+        train_data = generate_masked_sentences(wnut['train'])
+        # Save the processed data
+        with open('models/data/train_data.pkl', 'wb') as f:
+            pickle.dump(train_data, f)
+    else:
+        # Load data
+        with open('models/data/train_data.pkl', 'rb') as f:
+            train_data = pickle.load(f)
+
+    # If the test data does not exist, generate it
+    if not test_data_exists:
+        test_data = generate_masked_sentences(wnut['test'])
+        # Save the processed data
+        with open('models/data/test_data.pkl', 'wb') as f:
+            pickle.dump(test_data, f)
+    else:
+        # Load data
+        with open('models/data/test_data.pkl', 'rb') as f:
+            test_data = pickle.load(f)
+
+
+
     # Load datasets
     word2idx, idx2word = generate_word2idx(train_data, max_len, PAD)
     # Vocab length
@@ -94,10 +124,10 @@ def main():
 
 def train(models_to_train: list, train_data: list, state: dict):
 
-    train_sentence_feats, train_mask_labels, train_named_entity_sentence_feats, train_named_entity_data_labels, _, train_approach2_labels, train_approach_3_task_2_labels = preprocess_data(train_data, state['word2idx'], state['max_len'], state['num_entities'], state['PAD'])
-   
-    # Train the models
 
+    train_sentence_feats, train_mask_labels, train_named_entity_sentence_feats, train_named_entity_data_labels, _, train_approach2_labels, train_approach_3_task_2_labels = preprocess_data(train_data, state['word2idx'], state['max_len'], state['num_entities'], state['PAD'])
+
+    # Train the models
     if 1 in models_to_train:
         print("Approach 1: Training mask prediction model")
         approach1_mask_prediction = Approach1MaskPrediction(state['vocab_dim'], state['emb_dim'])
@@ -112,7 +142,7 @@ def train(models_to_train: list, train_data: list, state: dict):
                 y_pred = approach1_mask_prediction(batch_feats)
                 loss = criterion(y_pred, batch_labels)
                 loss.backward()
-                optimizer.step()    
+                optimizer.step()
             print("Epoch: {}/{}...".format(epoch+1, state['num_epochs']),
                     "Loss: {:.6f}...".format(loss.item()))
             
@@ -190,7 +220,7 @@ def train(models_to_train: list, train_data: list, state: dict):
             
         # Save the model
         if state['save']:
-            torch.save(combined_model.state_dict(), 'models/approach3.pt')                     
+            torch.save(combined_model.state_dict(), 'models/approach3.pt')
 
 def evaluate(models_to_evaluate, test_data: list, state: dict):
     # Check if anything is stored in the models directory
