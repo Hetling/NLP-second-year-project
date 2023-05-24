@@ -1,31 +1,27 @@
 import sys
+import numpy as np
 
 def readBIO(path):
     #read in BIO format
     #return list of lists of tags
     ents = []
-    curEnts = []
     for line in open(path):
         line = line.strip()
-        if line == '':
-            ents.append(curEnts)
-            curEnts = []
-        elif line[0] == '#' and len(line.split('\t')) == 1:
-            continue
-        else:
-            curEnts.append(line.split('\t')[1])
+        ents.append(line) #I don't have words here, so 0
     return ents
 
 def toSpans(tags):
     spans = set()
+    spans_list = list()
     for beg in range(len(tags)):
         if tags[beg][0] == 'B':
-            end = beg
             for end in range(beg+1, len(tags)):
-                if tags[beg][0] != 'I':
+                if tags[end][0] != 'I':
                     break
             spans.add(str(beg) + '-' + str(end) + ':' + tags[beg][2:])
-    return spans
+            spans_list.append(str(beg) + '-' + str(end) + ':' + tags[beg][2:])
+
+    return spans, spans_list
 
 def getInstanceScores(predPath, goldPath):
     goldEnts = readBIO(goldPath)
@@ -33,15 +29,18 @@ def getInstanceScores(predPath, goldPath):
     tp = 0
     fp = 0
     fn = 0
-    for goldEnt, predEnt in zip(goldEnts, predEnts):
-        goldSpans = toSpans(goldEnt)
-        predSpans = toSpans(predEnt)
-        print(goldSpans)
-        overlap = len(goldSpans.intersection(predSpans))
 
-        tp += overlap
-        fp += len(predSpans) - overlap
-        fn += len(goldSpans) - overlap
+    goldSpans, goldSpans_list = toSpans(goldEnts)
+    predSpans, predSpans_list = toSpans(predEnts)
+
+    np.savetxt('goldSpans.txt', goldSpans_list, fmt='%s')
+    np.savetxt('predSpans.txt', predSpans_list, fmt='%s')
+
+    overlap = len(goldSpans.intersection(predSpans))
+
+    tp += overlap
+    fp += len(predSpans) - overlap
+    fn += len(goldSpans) - overlap
     #calculate accuracy
 
     prec = 0.0 if tp+fp == 0 else tp/(tp+fp)
@@ -50,8 +49,6 @@ def getInstanceScores(predPath, goldPath):
 
     return {'model': predPath.split('/')[-1], 'prec': prec, 'rec': rec, 'f1': f1}
     
-    
-
 if __name__ == '__main__':
     if len(sys.argv) < 3:
         print('please provide path to gold file and output of your system (in same format)')
