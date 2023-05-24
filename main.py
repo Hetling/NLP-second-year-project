@@ -45,7 +45,7 @@ def main():
     # Ideally as much as possible should be shared so we can compare the approaches with more or less the same architecture
     PAD = '<PAD>'
     batch_size = 32
-    num_epochs = 10
+    num_epochs = 2
     lr = 0.001
     max_len = 32 # Length of sentence
     emb_dim = 128 # The embedding dimension of each token 
@@ -59,57 +59,8 @@ def main():
     wnut = load_dataset("wnut_17")
 
     # Preprocess data
-    # Check if models/data/train_data.pkl and models/data/test_data.pkl exists
-
-    if not os.path.exists('models/data'):    
-        os.makedirs('models/data')
-
-    train_data_exists = os.path.exists('models/data/train_data.pkl')
-    test_data_exists = os.path.exists('models/data/test_data.pkl')
-    # If the train data does not exist, generate it
-    if not train_data_exists:
-        train_data = generate_masked_sentences(wnut['train'])
-        # Save the processed data
-        with open('models/data/train_data.pkl', 'wb') as f:
-            pickle.dump(train_data, f)
-    else:
-        # Load data
-        with open('models/data/train_data.pkl', 'rb') as f:
-            train_data = pickle.load(f)
-
-    # If the test data does not exist, generate it
-    if not test_data_exists:
-        test_data = generate_masked_sentences(wnut['test'])
-        # Save the processed data
-        with open('models/data/test_data.pkl', 'wb') as f:
-            pickle.dump(test_data, f)
-    else:
-        # Load data
-        with open('models/data/test_data.pkl', 'rb') as f:
-            test_data = pickle.load(f)
-
-
-    # # Check if the data exists
-    # if not train_data_exists or not test_data_exists:
-    #     # If the train data does not exist, generate it
-    #     if not train_data_exists:
-    #         train_data = generate_masked_sentences(wnut['train'])
-    #         # Save the processed data
-    #         with open('models/data/train_data.pkl', 'wb') as f:
-    #             pickle.dump(train_data, f)
-    #     # If the test data does not exist, generate it
-    #     if not test_data_exists:
-    #         test_data = generate_masked_sentences(wnut['test'])
-    #         # Save the processed data
-    #         with open('models/data/test_data.pkl', 'wb') as f:
-    #             pickle.dump(test_data, f)
-    # # If the data already exists, load it
-    # else:
-    #     # Load data
-    #     with open('models/data/train_data.pkl', 'rb') as f:
-    #         train_data = pickle.load(f)
-    #     with open('models/data/test_data.pkl', 'rb') as f:
-    #         test_data = pickle.load(f)
+    train_data = generate_masked_sentences(wnut['train'])
+    test_data = generate_masked_sentences(wnut['test'])
 
     # Load datasets
     word2idx, idx2word = generate_word2idx(train_data, max_len, PAD)
