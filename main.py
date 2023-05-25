@@ -279,8 +279,6 @@ def evaluate(models_to_evaluate, test_data: list, state: dict):
             y_pred = approach1_entity_classification(test_sentence_feats[indices])
             y_pred = torch.argmax(y_pred, axis=1)
             y_test = torch.argmax(approach1_model_2_test_data[indices], axis=1)
-            print(y_pred)
-            print(y_test)
             print("Accuracy of entity classification model", accuracy_score(y_test, y_pred))
             print("F1 score of entity classification model", f1_score(y_test, y_pred, average='macro'))
 
