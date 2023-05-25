@@ -164,23 +164,3 @@ def get_word_embedding(text, sentence_length=32):
     # token_vecs_sum = token_vecs_sum[1:-1]
 
     return token_vecs_sum
-
-# def embed_sentences(dataset, sentence_length):
-#     print("Embedding sentences...")
-#     embedded_sentences = torch.zeros((len(dataset), 32, 768))
-#     pbar = tqdm(total=len(dataset))
-
-#     # Iterate over the sentences
-#     for index, sent in enumerate(dataset):
-#         tokens = sent["tokens"]
-#         sentence = " ".join(tokens)
-#         word_vector = get_word_embedding(sentence, sentence_length=sentence_length)
-#         # Add to tensor
-#         embedded_sentences[index] = word_vector
-#         # embedded_sentences.append(word_vector)
-        
-#         pbar.update(1)
-
-#     pbar.close()
-
-#     return embedded_sentences

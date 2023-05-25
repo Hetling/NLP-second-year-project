@@ -73,6 +73,7 @@ class Approach2(nn.Module):
         super(Approach2, self).__init__()
         #self.word_embeddings = nn.Embedding(vocab_dim, emb_dim)
         self.linear = nn.Linear(768, 128)
+        self.lstm = nn.LSTM(128, 128, batch_first=True)
         # Pool together all word embeddings after linear layer
         self.pool = nn.AdaptiveMaxPool1d(1)
         self.output = nn.Linear(128, num_entities)
@@ -82,6 +83,7 @@ class Approach2(nn.Module):
         #x = self.word_embeddings(x)
         x = self.linear(x)
         x = nn.functional.relu(x)
+        x,_ = self.lstm(x)
         x = self.pool(x.transpose(1, 2)).squeeze(2)
         output = self.output(x)
         output = torch.softmax(output, dim=1)
@@ -103,6 +105,7 @@ class Approach3CombinedModel(nn.Module):
         # First part of the model is same between the two models
         #self.word_embeddings = nn.Embedding(vocab_dim, emb_dim)
         self.linear = nn.Linear(768, 128)
+        self.lstm = nn.LSTM(128, 128, batch_first=True)
         # Pool together all word embeddings after linear layer
         self.pool = nn.AdaptiveMaxPool1d(1)
 
@@ -121,8 +124,9 @@ class Approach3CombinedModel(nn.Module):
         #x = self.word_embeddings(x)
         x = self.linear(x)        
         x = nn.functional.relu(x)
-        # Pool over the output of relu        
-        x = self.pool(x.transpose(1, 2)).squeeze(2)  
+        x,_ = self.lstm(x)
+        # Pool over the output of relu
+        x = self.pool(x.transpose(1, 2)).squeeze(2)
 
         # Run through model 1
         model1_output = self.model1_output(x)
