@@ -12,6 +12,8 @@ from scripts.preprocess import generate_masked_sentences, generate_word2idx, pre
 from models import Approach1MaskPrediction, Approach1EntityClassification, Approach2, Approach3CombinedModel
 
 def main():
+
+    torch.manual_seed(17)
     # Create the argument parser
     parser = argparse.ArgumentParser(description='Script for loading data and training neural networks.')
 
@@ -45,7 +47,7 @@ def main():
     # Ideally as much as possible should be shared so we can compare the approaches with more or less the same architecture
     PAD = '<PAD>'
     batch_size = 32
-    num_epochs = 2
+    num_epochs = 10
     lr = 0.001
     max_len = 32 # Length of sentence
     emb_dim = 128 # The embedding dimension of each token 
@@ -59,8 +61,57 @@ def main():
     wnut = load_dataset("wnut_17")
 
     # Preprocess data
-    train_data = generate_masked_sentences(wnut['train'])
-    test_data = generate_masked_sentences(wnut['test'])
+    # Check if models/data/train_data.pkl and models/data/test_data.pkl exists
+
+    if not os.path.exists('models/data'):    
+        os.makedirs('models/data')
+
+    train_data_exists = os.path.exists('models/data/train_data.pkl')
+    test_data_exists = os.path.exists('models/data/test_data.pkl')
+    # If the train data does not exist, generate it
+    if not train_data_exists:
+        train_data = generate_masked_sentences(wnut['train'])
+        # Save the processed data
+        with open('models/data/train_data.pkl', 'wb') as f:
+            pickle.dump(train_data, f)
+    else:
+        # Load data
+        with open('models/data/train_data.pkl', 'rb') as f:
+            train_data = pickle.load(f)
+
+    # If the test data does not exist, generate it
+    if not test_data_exists:
+        test_data = generate_masked_sentences(wnut['test'])
+        # Save the processed data
+        with open('models/data/test_data.pkl', 'wb') as f:
+            pickle.dump(test_data, f)
+    else:
+        # Load data
+        with open('models/data/test_data.pkl', 'rb') as f:
+            test_data = pickle.load(f)
+
+
+    # # Check if the data exists
+    # if not train_data_exists or not test_data_exists:
+    #     # If the train data does not exist, generate it
+    #     if not train_data_exists:
+    #         train_data = generate_masked_sentences(wnut['train'])
+    #         # Save the processed data
+    #         with open('models/data/train_data.pkl', 'wb') as f:
+    #             pickle.dump(train_data, f)
+    #     # If the test data does not exist, generate it
+    #     if not test_data_exists:
+    #         test_data = generate_masked_sentences(wnut['test'])
+    #         # Save the processed data
+    #         with open('models/data/test_data.pkl', 'wb') as f:
+    #             pickle.dump(test_data, f)
+    # # If the data already exists, load it
+    # else:
+    #     # Load data
+    #     with open('models/data/train_data.pkl', 'rb') as f:
+    #         train_data = pickle.load(f)
+    #     with open('models/data/test_data.pkl', 'rb') as f:
+    #         test_data = pickle.load(f)
 
     # Load datasets
     word2idx, idx2word = generate_word2idx(train_data, max_len, PAD)
@@ -126,7 +177,7 @@ def train(models_to_train: list, train_data: list, state: dict):
         criterion = nn.CrossEntropyLoss()
         optimizer = torch.optim.Adam(approach1_entity_classification.parameters(), lr=state['lr'])
 
-        for epoch in range(state['num_epochs']):
+        for epoch in range(state['num_epochs']+50):
             for i in range(0, len(train_named_entity_sentence_feats), state['batch_size']):
                 batch_feats = train_named_entity_sentence_feats[i:i+state['batch_size']]
                 batch_labels = train_named_entity_data_labels[i:i+state['batch_size']]
