@@ -17,7 +17,7 @@ class Approach1MaskPrediction(nn.Module):
         super(Approach1MaskPrediction, self).__init__()
         self.word_embeddings = nn.Embedding(vocab_dim, emb_dim)
         # LSTM layer
-        self.lstm = nn.LSTM(emb_dim, 128, batch_first=True)        
+        self.lstm = nn.LSTM(emb_dim, 128, batch_first=True)
         # Pool together all LSTM hidden states
         self.pool = nn.AdaptiveMaxPool1d(1)
         self.linear = nn.Linear(128, 128)
@@ -27,7 +27,7 @@ class Approach1MaskPrediction(nn.Module):
     def forward(self, x):
         x = self.word_embeddings(x)
         x, _ = self.lstm(x)
-        x = self.pool(x.transpose(1, 2)).squeeze(2)
+        x = self.pool(x.transpose(1, 2)).squeeze(2) # We transpose x so the pooling layer pools over word embeddings and not over the sequence length. Then we squeeze the output to remove the extra dimension
         output = self.output(x)
         x = self.linear(x)
         x = nn.functional.relu(x)
@@ -127,6 +127,8 @@ class Approach3CombinedModel(nn.Module):
         
     def forward(self, x):
         x = self.word_embeddings(x)
+        # LSTM
+        x, _ = self.lstm(x)
         # Pool over the output of relu        
         x = self.pool(x.transpose(1, 2)).squeeze(2)  
         x = self.linear(x)
