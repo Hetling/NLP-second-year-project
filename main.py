@@ -5,25 +5,24 @@ import torch.nn as nn
 from datasets import load_dataset
 from sklearn.metrics import accuracy_score
 from sklearn.metrics import f1_score
-import pickle
 
 from scripts.preprocess import generate_masked_sentences, generate_word2idx, preprocess_data
 
 from models import Approach1MaskPrediction, Approach1EntityClassification, Approach2, Approach3CombinedModel
 
 def main():
-
     torch.manual_seed(17)
     # Create the argument parser
-    parser = argparse.ArgumentParser(description='Script for loading data and training neural networks.')
+    parser = argparse.ArgumentParser(description='Script for loading data and training neural networks')
 
     # Add the command line arguments
     parser.add_argument('--approach-1', action='store_true', help='Perform action on approach 1')
     parser.add_argument('--approach-2', action='store_true', help='Perform action on approach 2')
     parser.add_argument('--approach-3', action='store_true', help='Perform action on approach 3')
-    parser.add_argument('--train', action='store_true', help='Train the models')
     parser.add_argument('--save', action='store_true', default=True, help='Save the trained models')
-    parser.add_argument('--evaluate', action='store_true', default=False, help='Evaluate the trained models')
+    parser.add_argument('--train', action='store_true', help='Train the models')
+    parser.add_argument('--validate', action='store_true', default=False, help='Evaluate the trained models')
+    parser.add_argument('--test', action='store_true', default=False, help='Test the trained models on the test set')
 
     # Parse the arguments
     args = parser.parse_args()
@@ -44,7 +43,7 @@ def main():
         models_selected.append(3)
 
     # Define hyperparameters to share between all three approaches
-    # Ideally as much as possible should be shared so we can compare the approaches with more or less the same architecture
+    # All these parameters are shared between models so we can compare the approaches as fairly as possible
     PAD = '<PAD>'
     batch_size = 32
     num_epochs = 10
@@ -141,8 +140,11 @@ def main():
     if args.train:
         train(models_selected, train_data, state)
 
-    if args.evaluate:
+    if args.test:
         evaluate(models_selected, test_data, state)
+
+    if args.validate:
+        evaluate(models_selected, val_data, state)
 
 def train(models_to_train: list, train_data: list, state: dict):
 
@@ -157,7 +159,7 @@ def train(models_to_train: list, train_data: list, state: dict):
         optimizer = torch.optim.Adam(approach1_mask_prediction.parameters(), lr=state['lr'])
 
         for epoch in range(state['num_epochs']):
-            for i in range(0, len(train_sentence_feats), state['batch_size']):        
+            for i in range(0, len(train_sentence_feats), state['batch_size']):
                 batch_feats = train_sentence_feats[i:i+state['batch_size']]
                 batch_labels = train_mask_labels[i:i+state['batch_size']]
                 optimizer.zero_grad()
@@ -287,6 +289,8 @@ def evaluate(models_to_evaluate, test_data: list, state: dict):
             y_pred = approach1_entity_classification(test_sentence_feats[indices])
             y_pred = torch.argmax(y_pred, axis=1)
             y_test = torch.argmax(approach1_model_2_test_data[indices], axis=1)
+            print(y_pred)
+            print(y_test)
             print("Accuracy of entity classification model", accuracy_score(y_test, y_pred))
             print("F1 score of entity classification model", f1_score(y_test, y_pred, average='macro'))
 
