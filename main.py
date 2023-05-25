@@ -68,6 +68,8 @@ def main():
 
     train_data_exists = os.path.exists('models/data/train_data.pkl')
     test_data_exists = os.path.exists('models/data/test_data.pkl')
+    val_data_exists = os.path.exists('models/data/val_data.pkl')
+
     # If the train data does not exist, generate it
     if not train_data_exists:
         train_data = generate_masked_sentences(wnut['train'])
@@ -89,6 +91,16 @@ def main():
         # Load data
         with open('models/data/test_data.pkl', 'rb') as f:
             test_data = pickle.load(f)
+
+    if not val_data_exists:
+        val_data = generate_masked_sentences(wnut['validation'])
+        # Save the processed data
+        with open('models/data/val_data.pkl', 'wb') as f:
+            pickle.dump(val_data, f)
+    else:
+        # Load data
+        with open('models/data/val_data.pkl', 'rb') as f:
+            val_data = pickle.load(f)
 
     # Load datasets
     word2idx, idx2word = generate_word2idx(train_data, max_len, PAD)
