@@ -154,3 +154,15 @@ cython_debug/
 
 models/*
 results/*
+
+
+approach1_gold_binary.csv
+approach1_gold_multiclass.csv
+approach1_pred_binary.csv
+approach1_pred_multiclass.csv
+filtered_labels.csv
+filtered_predictions.csv
+flat_labels.csv
+flat_predictions.csv
+true_labels.csv
+.DS_Store
