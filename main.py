@@ -275,8 +275,8 @@ def evaluate(models_to_evaluate, test_data: list, state: dict):
         gold_list = [label_list[int(gold[0])] for gold in golds]
     
         #save predictions and gold labels to csv using pandas
-        np.savetxt('approach1_pred_binary.csv', pred_list, delimiter=',', fmt='%s')
-        np.savetxt('approach1_gold_binary.csv', gold_list, delimiter=',', fmt='%s')
+        np.savetxt('predictions/approach1_pred_binary.csv', pred_list, delimiter=',', fmt='%s')
+        np.savetxt('predictions/approach1_gold_binary.csv', gold_list, delimiter=',', fmt='%s')
 
 
         print("Approach 1: Evaluating entity classification model")
@@ -303,8 +303,8 @@ def evaluate(models_to_evaluate, test_data: list, state: dict):
         gold_list = [label_list[int(gold)] for gold in golds]
     
         #save predictions and gold labels to csv using pandas
-        np.savetxt('approach1_pred_multiclass.csv', pred_list, delimiter=',', fmt='%s')
-        np.savetxt('approach1_gold_multiclass.csv', gold_list, delimiter=',', fmt='%s')
+        np.savetxt('predictions/approach1_pred_multiclass.csv', pred_list, delimiter=',', fmt='%s')
+        np.savetxt('predictions/approach1_gold_multiclass.csv', gold_list, delimiter=',', fmt='%s')
 
 
     if 2 in models_to_evaluate:
