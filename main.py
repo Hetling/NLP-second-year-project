@@ -350,9 +350,9 @@ if __name__ == '__main__':
     To train only approach 1 and 2 without saving them
     `python main.py --train --approach-1 --approach-2 --save False`
 
-    To evaluate all models from disk. Remember to train them first
-    `python main.py --evaluate`
+    To test all models from disk. Remember to train them first
+    `python main.py --test`
     To evaluate only approach 1 and 2
-    `python main.py --evaluate --approach-1 --approach-2`
+    `python main.py --test --approach-1 --approach-2`
     '''
     main()
