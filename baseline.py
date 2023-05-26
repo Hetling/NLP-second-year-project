@@ -100,3 +100,15 @@ trainer = Trainer(
 trainer.train()
 trainer.evaluate()
 
+# # SPAN F1 EVALUATION
+
+# filtered_labels = np.loadtxt("filtered_labels.csv", delimiter=",")
+# filtered_predictions = np.loadtxt("filtered_predictions.csv", delimiter=",")
+
+# #map using label_list
+# filtered_labels = np.vectorize(label_list.__getitem__)(filtered_labels.astype(int))
+# filtered_predictions = np.vectorize(label_list.__getitem__)(filtered_predictions.astype(int))
+
+# #save filtered predictions and filtered labels to csv
+# np.savetxt("filtered_predictions_mapped.csv", filtered_predictions, delimiter=",", fmt="%s")
+# np.savetxt("filtered_labels_mapped.csv", filtered_labels, delimiter=",", fmt="%s")
