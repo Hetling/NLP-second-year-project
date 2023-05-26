@@ -13,7 +13,7 @@
 
 ## Getting started
 
-1. Start by cloning the repo: `git clone https://link-to-project`
+1. Start by cloning the repo: `git clone https://github.com/Hetling/NLP-second-year-project.git`
 1. Download the contextualized word embedding `pickle` files here: [https://drive.google.com/drive/folders/1SinJt4EaPbn2el-Yjhj_KN7KkaCW7LY2](https://drive.google.com/drive/folders/1SinJt4EaPbn2el-Yjhj_KN7KkaCW7LY2)
 2. Create a new `models` folder in the root directory
 3. Place the downloaded `data` folder inside of the newly created `models` folder. 
