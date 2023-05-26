@@ -6,7 +6,7 @@ from datasets import load_dataset
 from sklearn.metrics import accuracy_score
 from sklearn.metrics import f1_score
 import pickle
-
+import numpy as np
 from scripts.preprocess import generate_masked_sentences, generate_word2idx, preprocess_data
 
 from models import Approach1MaskPrediction, Approach1EntityClassification, Approach2, Approach3CombinedModel
@@ -59,6 +59,9 @@ def main():
         os.makedirs('models')
     
     wnut = load_dataset("wnut_17")
+
+    global label_list
+    label_list=wnut["train"].features[f"ner_tags"].feature.names
 
     # Preprocess data
     # Check if models/data/train_data.pkl and models/data/test_data.pkl exists
@@ -256,7 +259,6 @@ def evaluate(models_to_evaluate, test_data: list, state: dict):
 
         # Evaluate performance
         approach1_mask_prediction.eval()
-
         with torch.no_grad():
             y_pred = approach1_mask_prediction(test_sentence_feats)
             threshold = 0.5
@@ -265,10 +267,21 @@ def evaluate(models_to_evaluate, test_data: list, state: dict):
             print("Accuracy of mask prediction model", accuracy_score(y_test, y_pred))
             print("F1 score of mask prediction model", f1_score(y_test, y_pred, average='macro'))
 
+            # Convert predictions and gold labels tensors to lists of integers
+            preds = y_pred.tolist()
+            golds= y_test.tolist()
+        
+        pred_list = [label_list[int(pred[0])] for pred in preds]
+        gold_list = [label_list[int(gold[0])] for gold in golds]
+    
+        #save predictions and gold labels to csv using pandas
+        np.savetxt('approach1_pred_binary.csv', pred_list, delimiter=',', fmt='%s')
+        np.savetxt('approach1_gold_binary.csv', gold_list, delimiter=',', fmt='%s')
+
+
         print("Approach 1: Evaluating entity classification model")
         # Only run Approach1EntityClassification if y_pred is 1
         approach1_entity_classification.eval()
-
         with torch.no_grad():
             # Get indices where y_pred is 1
             indices = torch.nonzero(y_pred).squeeze(1)
@@ -281,6 +294,17 @@ def evaluate(models_to_evaluate, test_data: list, state: dict):
             y_test = torch.argmax(approach1_model_2_test_data[indices], axis=1)
             print("Accuracy of entity classification model", accuracy_score(y_test, y_pred))
             print("F1 score of entity classification model", f1_score(y_test, y_pred, average='macro'))
+
+            # Convert predictions and gold labels tensors to lists of integers
+            preds = y_pred.tolist()
+            golds = y_test.tolist()
+        
+        pred_list = [label_list[int(pred)] for pred in preds]
+        gold_list = [label_list[int(gold)] for gold in golds]
+    
+        #save predictions and gold labels to csv using pandas
+        np.savetxt('approach1_pred_multiclass.csv', pred_list, delimiter=',', fmt='%s')
+        np.savetxt('approach1_gold_multiclass.csv', gold_list, delimiter=',', fmt='%s')
 
 
     if 2 in models_to_evaluate:
