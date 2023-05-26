@@ -50,3 +50,5 @@ Now you are ready to train, validate, and test the models. The `main.py` file ac
 ```bash
   python main.py --test --approach-1 --approach-2
 ```
+
+To train the baseline model, run `baseline.py` without any arguments. To reproduce visualizations, see `visualize_net.ipynb`
